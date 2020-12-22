@@ -1,0 +1,64 @@
+include:
+  remote: 'https://gitlab.com/BenjaminLegrand/shared-gitlab-ci/raw/master/.shared-gitlab-ci.yml'
+
+variables:
+  ANDROID_COMPILE_SDK: "30"
+  KEYSTORE_NAME: "keystore.jks"
+
+default:
+  before_script:
+    - chmod +x ./gradlew
+
+stages:
+  - keystore
+  - build
+  - test
+
+build_debug:
+  image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
+  script: ./gradlew assembleDebug
+  stage: build
+  tags:
+    - android
+  except:
+    - tags
+
+unit_test_debug:
+  image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
+  script: ./gradlew testDebugUnitTest
+  stage: test
+  tags:
+    - android
+  except:
+    - tags
+
+clone_keystore:
+  script:
+    - cd ~ && rm -rf $KEYSTORES_PROJECT_NAME  && git clone $KEYSTORES_REPO_URL
+    - mv $KEYSTORES_PROJECT_NAME/$KEYSTORE_NAME $CI_PROJECT_DIR/$KEYSTORE_NAME
+  stage: keystore
+  tags:
+    - git
+  artifacts:
+    paths:
+      - $KEYSTORE_NAME
+  only:
+    - tags
+
+build_release:
+  image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
+  script:
+    - ./gradlew assembleRelease -Pandroid.injected.signing.store.file=$CI_PROJECT_DIR/$KEYSTORE_NAME -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD -Pandroid.injected.signing.key.alias=$KEYSTORE_ALIAS -Pandroid.injected.signing.key.password=$KEYSTORE_KEY_PASSWORD
+    - mv app/build/outputs/apk/release/*.apk $CI_PROJECT_DIR/$RELEASE_APK_NAME
+  stage: build
+  tags:
+    - android
+  artifacts:
+    paths:
+      - $RELEASE_APK_NAME
+  only:
+    - tags
+
+
+
+

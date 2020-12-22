@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
+
+android {
+    compileSdkVersion Versions.COMPILE_SDK
+
+    defaultConfig {
+        applicationId "fr.legrand.sprinkle"
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
+        versionCode 1
+        versionName "0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation Libraries.SUPPORT
+    implementation Libraries.KOTLIN_STDLIB
+    implementation Libraries.COROUTINES_ANDROID
+    implementation Libraries.KTX
+    implementation Libraries.NAVIGATION
+
+    implementation Libraries.GLIDE
+    implementation Libraries.SERIALIZATION
+    implementation Libraries.TIMBER
+    implementation Libraries.VIEW_BINDING_EXTENSIONS
+}
