@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Sprinkle.TextView" parent="Widget.MaterialComponents.TextView" />
+
+    <style name="Widget.Sprinkle.TextView.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textColor">?textColorPrimary</item>
+    </style>
+</resources>
