@@ -31,5 +31,4 @@ class SunflowerProgressBar @JvmOverloads constructor(
             repeatCount = ObjectAnimator.INFINITE
         }.start()
     }
-
 }

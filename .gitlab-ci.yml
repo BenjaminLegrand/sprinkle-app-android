@@ -13,6 +13,7 @@ stages:
   - keystore
   - build
   - test
+  - analyze
 
 build_debug:
   image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
@@ -31,6 +32,16 @@ unit_test_debug:
     - android
   except:
     - tags
+
+static_analysis:
+  image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
+  script: ./gradlew evaluateViolations
+  stage: analysis
+  tags:
+    - android
+  except:
+    - tags
+
 
 clone_keystore:
   script:
