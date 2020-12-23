@@ -21,7 +21,7 @@ object Versions {
     const val GLIDE = "4.11.0"
     const val TIMBER = "4.7.1"
     const val SERIALIZATION = "1.0.1"
-    const val VIEW_BINDING_EXTENSIONS = "1.0-SNAPSHOT"
+    const val VIEW_BINDING_EXTENSIONS = "1.0"
 
     const val JUNIT = "5.7.0"
     const val ROBOLECTRIC = "4.4"
