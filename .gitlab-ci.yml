@@ -41,6 +41,9 @@ static_analysis:
     - android
   except:
     - tags
+  artifacts:
+    paths:
+      - app/build/reports
 
 
 clone_keystore:
