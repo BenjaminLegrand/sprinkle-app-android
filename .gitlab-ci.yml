@@ -36,7 +36,7 @@ unit_test_debug:
 static_analysis:
   image: blegrand93/android-build:sdk-${ANDROID_COMPILE_SDK}
   script: ./gradlew evaluateViolations
-  stage: analysis
+  stage: analyze
   tags:
     - android
   except:
