@@ -16,7 +16,10 @@ staticAnalysis {
         config = files("$project.rootDir/detekt-rules.yml")
         failFast = false
     }
-    lintOptions {}
+    lintOptions {
+        xmlReport false
+        ignoreWarnings true
+    }
     ktlint{
         android.set(true)
         reporters {
