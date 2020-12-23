@@ -8,5 +8,4 @@ class SplashscreenActivity : BindingActivity<ActivitySplashscreenBinding>() {
 
     override fun getBinding(layoutInflater: LayoutInflater): ActivitySplashscreenBinding =
         ActivitySplashscreenBinding.inflate(layoutInflater)
-
 }

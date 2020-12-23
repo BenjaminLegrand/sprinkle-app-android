@@ -8,7 +8,7 @@ object Versions {
     const val MIN_SDK = 21
     const val KOTLIN = "1.4.10"
 
-
+    const val STATIC_ANALYSIS = "1.2"
     const val ANDROID_GRADLE = "4.1.1"
     const val COROUTINES_ANDROID = "1.4.2"
 

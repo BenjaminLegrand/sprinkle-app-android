@@ -1,0 +1,32 @@
+
+
+//Apply global static analysis plugin
+apply plugin: Plugins.STATIC_ANALYSIS_PLUGIN_ID
+
+//Ktlint and Detekt must be setup separately before being used by global plugin
+apply plugin: Plugins.KTLINT_PLUGIN_ID
+apply plugin: Plugins.DETEKT_PLUGIN_ID
+
+staticAnalysis {
+    penalty {
+        maxErrors = 0
+        maxWarnings = 0
+    }
+    detekt {
+        config = files("$project.rootDir/detekt-rules.yml")
+        failFast = false
+    }
+    lintOptions {
+        xmlReport false
+        ignoreWarnings true
+    }
+    ktlint{
+        android.set(true)
+        reporters {
+            reporter "checkstyle"
+            reporter "html"
+        }
+    }
+}
+
+
