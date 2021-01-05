@@ -34,6 +34,9 @@ object Libraries {
         "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
     )
 
+    const val HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
+    const val HILT_PROCESSOR = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+
     const val VIEW_BINDING_EXTENSIONS = "fr.blegrand.libraries:view-binding-extensions:${Versions.VIEW_BINDING_EXTENSIONS}"
 
     const val JUNIT = "junit:junit:${Versions.JUNIT}"

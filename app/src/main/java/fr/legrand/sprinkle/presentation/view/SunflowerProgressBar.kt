@@ -9,6 +9,7 @@ import fr.legrand.sprinkle.R
 private const val SUNFLOWER_ANIM_DURATION = 2000L
 private const val START_ROTATION = 0f
 private const val END_ROTATION = 360f
+private const val ROTATION_PROPERTY_NAME = "rotation"
 
 class SunflowerProgressBar @JvmOverloads constructor(
     context: Context,
@@ -22,7 +23,7 @@ class SunflowerProgressBar @JvmOverloads constructor(
 
         ObjectAnimator.ofFloat(
             this,
-            "rotation",
+            ROTATION_PROPERTY_NAME,
             START_ROTATION,
             END_ROTATION
         ).apply {

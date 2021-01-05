@@ -17,6 +17,7 @@ object Versions {
     const val APP_COMPAT = "1.2.0"
     const val MATERIAL = "1.2.1"
     const val NAVIGATION = "2.3.2"
+    const val HILT = "2.28-alpha"
 
     const val GLIDE = "4.11.0"
     const val TIMBER = "4.7.1"
