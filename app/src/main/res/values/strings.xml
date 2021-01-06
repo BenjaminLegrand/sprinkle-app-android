@@ -2,4 +2,8 @@
     <string name="app_name">Sprinkle</string>
 
     <string name="plant_list_title">Mes plantes</string>
+    <string name="last_sprinkle_date_format">Arrosée le %s</string>
+    <string name="last_sprinkle_date_unknown">Jamais arrosée</string>
+    <string name="next_sprinkle_date_unknown">Aucune date prévue</string>
+    <string name="next_sprinkle_date_format">Prochain arrosage le %s</string>
 </resources>

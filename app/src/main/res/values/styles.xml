@@ -7,7 +7,41 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:textColor">?textColorPrimary</item>
+    <style name="Widget.Sprinkle.TextView.Light">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
+
+    <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textColor">?textColorPrimaryDark</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline2.Light">
+        <item name="android:textColor">?textColorPrimaryLight</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">?textColorPrimaryDark</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline5.Light">
+        <item name="android:textColor">?textColorPrimaryLight</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">?textColorPrimaryDark</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Body1.Light">
+        <item name="android:textColor">?textColorPrimaryLight</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?textColorPrimaryDark</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Body2.Light">
+        <item name="android:textColor">?textColorPrimaryLight</item>
+    </style>
+
+
 </resources>
