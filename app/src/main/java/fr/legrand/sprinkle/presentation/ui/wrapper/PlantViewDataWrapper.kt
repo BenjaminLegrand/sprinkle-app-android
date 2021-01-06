@@ -35,4 +35,6 @@ data class PlantViewDataWrapper(private val plant: Plant) {
                 dateFormat.format(nextSprinkleDate)
             )
         } ?: context.getString(R.string.next_sprinkle_date_unknown)
+
+    fun getImageUrl() = plant.imageUrl
 }
