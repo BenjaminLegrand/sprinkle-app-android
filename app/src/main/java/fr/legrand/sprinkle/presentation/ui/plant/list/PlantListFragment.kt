@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
+import fr.legrand.sprinkle.presentation.ui.extensions.hide
+import fr.legrand.sprinkle.presentation.ui.extensions.show
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
@@ -61,6 +63,9 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                     }
                 }
             )
+
+            fragmentPlantListPlaceholderGroup.show()
+            fragmentPlantListRecyclerView.hide()
         }
     }
 
@@ -79,3 +84,4 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         }
     }
 }
+

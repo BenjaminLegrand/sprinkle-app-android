@@ -8,6 +8,7 @@
     <string name="next_sprinkle_date_reached">Arrosez dès que possible !</string>
     <string name="next_sprinkle_date_today">Prochain arrosage aujourd\'hui !</string>
     <string name="sprinkle_all_title">Tout arroser</string>
+    <string name="plant_list_placeholder_text">Créez votre première plante pour commencer à utiliser Sprinkle !</string>
     <plurals name="next_sprinkle_date_format">
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>

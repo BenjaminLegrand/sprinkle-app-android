@@ -10,9 +10,38 @@
         style="@style/Widget.Sprinkle.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_recycler_view"
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/plant_list_title" />
+
+    <ImageView
+        android:id="@+id/fragment_plant_list_placeholder_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/plant_list_placeholder_height"
+        android:src="@drawable/ic_plant_list_placeholder"
+        app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_placeholder_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/fragment_plant_list_placeholder_text"
+        style="@style/Widget.Sprinkle.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/base_margin_double"
+        android:layout_marginTop="@dimen/base_margin_double"
+        android:gravity="center"
+        android:text="@string/plant_list_placeholder_text"
+        android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_placeholder_icon" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/fragment_plant_list_placeholder_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="fragment_plant_list_placeholder_text,fragment_plant_list_placeholder_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_plant_list_recycler_view"
