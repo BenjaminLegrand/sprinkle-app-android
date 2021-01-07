@@ -1,23 +1,22 @@
 package fr.legrand.sprinkle.presentation.ui.plant.list
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
-import fr.legrand.sprinkle.data.model.Exposition
-import fr.legrand.sprinkle.data.model.Plant
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
-import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
 import fr.legrand.viewbinding.extensions.BindingFragment
-import kotlinx.android.synthetic.main.fragment_plant_list.fragment_plant_list_recycler_view
-import java.util.Date
 import javax.inject.Inject
-import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
 
 @ExperimentalTime
 @AndroidEntryPoint
@@ -35,20 +34,48 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         binding {
-            fragment_plant_list_recycler_view.layoutManager = LinearLayoutManager(context).apply {
+            (requireActivity() as AppCompatActivity).setSupportActionBar(fragmentPlantListToolbar)
+
+            fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
-            fragment_plant_list_recycler_view.addItemDecoration(
+            fragmentPlantListRecyclerView.addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             )
-            fragment_plant_list_recycler_view.adapter = plantListAdapter
-        }
+            fragmentPlantListRecyclerView.adapter = plantListAdapter
 
-        plantListAdapter.setItems(listOf(
-            PlantViewDataWrapper(Plant(1, "Plant 1", "Ficcus", "", "", Exposition.LOW_SUNLIGHT, Date(), Date(), 1.toDuration(DurationUnit.DAYS), 1.toDuration(DurationUnit.DAYS))),
-            PlantViewDataWrapper(Plant(2, "Plant 1", "Ficcus", "", "", Exposition.LOW_SUNLIGHT, null, null, 1.toDuration(DurationUnit.DAYS), 1.toDuration(DurationUnit.DAYS))),
-            PlantViewDataWrapper(Plant(3, "Plant 1", "Ficcus", "", "", Exposition.LOW_SUNLIGHT, null, null, 1.toDuration(DurationUnit.DAYS), 1.toDuration(DurationUnit.DAYS)))
-        ))
+            fragmentPlantListRecyclerView.addOnScrollListener(
+                object : RecyclerView.OnScrollListener() {
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        super.onScrolled(recyclerView, dx, dy)
+                        if (dy > 0 && fragmentPlantListCreateFab.isShown) {
+                            // Scroll in bottom direction
+                            fragmentPlantListCreateFab.hide()
+                        } else if (!fragmentPlantListCreateFab.isShown) {
+                            // Scroll in top direction
+                            fragmentPlantListCreateFab.show()
+                        }
+                    }
+                }
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.plant_list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.plant_list_sprinkle_all_action -> {
+                // TODO sprinkle all
+                Toast.makeText(requireContext(), "Sprinkle all", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

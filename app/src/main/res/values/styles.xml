@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Widget.Sprinkle.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">?colorPrimary</item>
+        <item name="titleTextColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.Sprinkle.OverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="tint">?colorOnPrimary</item>
+    </style>
+
     <style name="Widget.Sprinkle.TextView" parent="Widget.MaterialComponents.TextView" />
 
     <style name="Widget.Sprinkle.TextView.Medium">

@@ -4,7 +4,8 @@ import android.content.Context
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.data.model.Plant
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
@@ -31,8 +32,8 @@ data class PlantViewDataWrapper(private val plant: Plant) {
 
     fun getFormattedNextSprinkleDate(context: Context): String =
         plant.nextSprinkleDate?.let { nextSprinkleDate ->
-            val remainingDays =
-                (Date().time - nextSprinkleDate.time).toDuration(DurationUnit.MILLISECONDS).inDays.toInt()
+            val remainingDays = (Date().time - nextSprinkleDate.time)
+                .toDuration(DurationUnit.MILLISECONDS).inDays.toInt()
             return when {
                 remainingDays < 0 -> {
                     context.getString(R.string.next_sprinkle_date_reached)
@@ -48,7 +49,6 @@ data class PlantViewDataWrapper(private val plant: Plant) {
                     )
                 }
             }
-
         } ?: context.getString(R.string.next_sprinkle_date_unknown)
 
     fun getImageUrl() = plant.imageUrl
