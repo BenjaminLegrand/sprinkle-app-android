@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="progress_bar_size">64dp</dimen>
+    <dimen name="plant_list_item_image_size">72dp</dimen>
+    <dimen name="base_margin">8dp</dimen>
+    <dimen name="base_margin_half">4dp</dimen>
+    <dimen name="base_margin_double">16dp</dimen>
+    <dimen name="plant_list_placeholder_height">120dp</dimen>
+    <dimen name="toolbar_icon_size">36dp</dimen>
+    <dimen name="toolbar_icon_padding">6dp</dimen>
+    <dimen name="plant_list_action_height">56dp</dimen>
+    <dimen name="base_corner_radius">12dp</dimen>
+    <dimen name="plant_list_bottomsheet_action_icon_size">38dp</dimen>
+    <dimen name="base_separator_height">0.5dp</dimen>
+    <dimen name="bottomsheet_peek_height">200dp</dimen>
+    <dimen name="plant_list_bottomsheet_min_height">300dp</dimen>
 </resources>

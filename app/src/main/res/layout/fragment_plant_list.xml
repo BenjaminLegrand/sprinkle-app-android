@@ -1,11 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_plant_list_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_plant_list_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Widget.Sprinkle.Toolbar"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/fragment_plant_list_toolbar_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/base_margin_double"
+                    android:gravity="center_vertical"
+                    android:text="@string/plant_list_title"
+                    android:textAppearance="@style/TextAppearance.Sprinkle.Toolbar.Title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_actions"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/fragment_plant_list_actions"
+                    android:layout_width="@dimen/toolbar_icon_size"
+                    android:layout_height="@dimen/toolbar_icon_size"
+                    android:layout_marginEnd="@dimen/base_margin"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbar_icon_padding"
+                    android:src="@drawable/ic_overflow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_plant_list_toolbar_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/fragment_plant_list_placeholder_icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/plant_list_placeholder_height"
+            android:src="@drawable/ic_plant_list_placeholder"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_placeholder_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/fragment_plant_list_placeholder_text"
+            style="@style/Widget.Sprinkle.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/base_margin_double"
+            android:layout_marginTop="@dimen/base_margin_double"
+            android:gravity="center"
+            android:text="@string/plant_list_placeholder_text"
+            android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_placeholder_icon" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/fragment_plant_list_placeholder_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="fragment_plant_list_placeholder_text,fragment_plant_list_placeholder_icon" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_plant_list_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_toolbar"
+            tools:listitem="@layout/view_plant_list_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_plant_list_create_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/base_margin_double"
+            android:layout_marginBottom="@dimen/base_margin_double"
+            android:src="@drawable/ic_create"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="?colorOnSecondary"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/fragment_plant_list_bottom_sheet_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Plant list" />
+        android:background="@color/bottomsheet_background_color" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_plant_list_bottomsheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/surface_top_corners_background"
+        android:minHeight="@dimen/plant_list_bottomsheet_min_height"
+        app:behavior_hideable="true"
+        app:behavior_skipCollapsed="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/fragment_plant_list_actions_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_top_corners_background"
+            android:padding="@dimen/base_margin_double"
+            android:text="@string/plant_list_actions_title"
+            android:textAppearance="@style/TextAppearance.Sprinkle.Headline5.Light"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_actions_scroll_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ScrollView
+            android:id="@+id/fragment_plant_list_actions_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_actions_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/fragment_plant_list_sprinkle_all_icon"
+                    android:layout_width="@dimen/plant_list_bottomsheet_action_icon_size"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:padding="@dimen/base_margin_half"
+                    android:src="@drawable/ic_sprinkle_all"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_sprinkle_all_text"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_sprinkle_all_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_sprinkle_all_text"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/fragment_plant_list_sprinkle_all_text"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/plant_list_action_height"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:layout_marginEnd="@dimen/base_margin_double"
+                    android:gravity="center_vertical"
+                    android:text="@string/sprinkle_all_title"
+                    android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_sprinkle_all_separator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_plant_list_sprinkle_all_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_sprinkle_all_action_area"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="?selectableItemBackground"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_sprinkle_all_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_sprinkle_all_text" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_sprinkle_all_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base_separator_height"
+                    android:background="?separatorColor"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_fertilize_text"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_sprinkle_all_text" />
+
+                <ImageView
+                    android:id="@+id/fragment_plant_list_fertilize_icon"
+                    android:layout_width="@dimen/plant_list_bottomsheet_action_icon_size"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:padding="@dimen/base_margin_half"
+                    android:src="@drawable/ic_fertilizer"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_fertilize_text"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_fertilize_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_fertilize_text"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/fragment_plant_list_fertilize_text"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/plant_list_action_height"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:layout_marginEnd="@dimen/base_margin_double"
+                    android:gravity="center_vertical"
+                    android:text="@string/fertilize_title"
+                    android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_fertilize_separator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_plant_list_fertilize_icon"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_sprinkle_all_separator" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_fertilize_area"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="?selectableItemBackground"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_fertilize_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_fertilize_text" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_fertilize_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base_separator_height"
+                    android:background="?separatorColor"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_plants_text"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_fertilize_text" />
+
+                <ImageView
+                    android:id="@+id/fragment_plant_list_delete_plants_icon"
+                    android:layout_width="@dimen/plant_list_bottomsheet_action_icon_size"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:padding="@dimen/base_margin_half"
+                    android:src="@drawable/ic_delete_plants"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_delete_plants_text"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_delete_plants_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_delete_plants_text"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/fragment_plant_list_delete_plants_text"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/plant_list_action_height"
+                    android:layout_marginStart="@dimen/base_margin_double"
+                    android:layout_marginEnd="@dimen/base_margin_double"
+                    android:gravity="center_vertical"
+                    android:text="@string/delete_plants_title"
+                    android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_plants_separator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_plant_list_delete_plants_icon"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_fertilize_separator" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_delete_plants_area"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="?selectableItemBackground"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_plant_list_delete_plants_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_plant_list_delete_plants_text" />
+
+                <View
+                    android:id="@+id/fragment_plant_list_delete_plants_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/base_separator_height"
+                    android:background="?separatorColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_delete_plants_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

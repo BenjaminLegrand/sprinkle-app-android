@@ -2,4 +2,18 @@
     <string name="app_name">Sprinkle</string>
 
     <string name="plant_list_title">Mes plantes</string>
+    <string name="last_sprinkle_date_format">Arrosée le %s</string>
+    <string name="last_sprinkle_date_unknown">Jamais arrosée</string>
+    <string name="next_sprinkle_date_unknown">Aucune date prévue</string>
+    <string name="next_sprinkle_date_reached">Arrosez dès que possible !</string>
+    <string name="next_sprinkle_date_today">Prochain arrosage aujourd\'hui !</string>
+    <string name="sprinkle_all_title">Tout arroser</string>
+    <string name="plant_list_placeholder_text">Créez votre première plante pour commencer à utiliser Sprinkle !</string>
+    <string name="plant_list_actions_title">Actions</string>
+    <string name="delete_plants_title">Supprimer des plantes</string>
+    <string name="fertilize_title">Mettre de l\'engrais</string>
+    <plurals name="next_sprinkle_date_format">
+        <item quantity="one">Prochain arrosage demain</item>
+        <item quantity="other">Prochain arrosage dans %d jours</item>
+    </plurals>
 </resources>

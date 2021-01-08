@@ -34,8 +34,17 @@ object Libraries {
         "androidx.navigation:navigation-ui-ktx:${Versions.NAVIGATION}"
     )
 
-    const val HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
-    const val HILT_PROCESSOR = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+    @JvmField
+    val HILT = arrayOf(
+        "com.google.dagger:hilt-android:${Versions.HILT}",
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_LIFECYCLE}"
+    )
+
+    @JvmField
+    val HILT_PROCESSOR = arrayOf(
+        "com.google.dagger:hilt-android-compiler:${Versions.HILT}",
+        "androidx.hilt:hilt-compiler:${Versions.HILT_LIFECYCLE}"
+    )
 
     const val VIEW_BINDING_EXTENSIONS = "fr.blegrand.libraries:view-binding-extensions:${Versions.VIEW_BINDING_EXTENSIONS}"
 

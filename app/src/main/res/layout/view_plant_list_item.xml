@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/base_margin_double"
+    android:layout_marginVertical="@dimen/base_margin">
+
+    <ImageView
+        android:id="@+id/view_plant_list_item_image"
+        android:layout_width="@dimen/plant_list_item_image_size"
+        android:layout_height="@dimen/plant_list_item_image_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_sunflower" />
+
+    <TextView
+        android:id="@+id/view_plant_list_item_name"
+        style="@style/Widget.Sprinkle.TextView.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_margin_double"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+        app:layout_constraintBottom_toTopOf="@id/view_plant_list_item_last_sprinkle_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_plant_list_item_image"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ficcus" />
+
+
+    <TextView
+        android:id="@+id/view_plant_list_item_last_sprinkle_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_margin_double"
+        android:layout_marginTop="@dimen/base_margin"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Sprinkle.Body2"
+        app:layout_constraintBottom_toTopOf="@id/view_plant_list_item_next_sprinkle_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_plant_list_item_image"
+        app:layout_constraintTop_toBottomOf="@id/view_plant_list_item_name"
+        tools:text="Arrosée le 09/08/21" />
+
+    <TextView
+        android:id="@+id/view_plant_list_item_next_sprinkle_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_margin_double"
+        android:layout_marginTop="@dimen/base_margin_half"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Sprinkle.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_plant_list_item_image"
+        app:layout_constraintTop_toBottomOf="@id/view_plant_list_item_last_sprinkle_date"
+        tools:text="Prochain arrosage le 12/08/21" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="textColorPrimary"/>
+    <attr name="textColorPrimaryDark"/>
+    <attr name="textColorPrimaryLight"/>
+    <attr name="separatorColor"/>
 </resources>
