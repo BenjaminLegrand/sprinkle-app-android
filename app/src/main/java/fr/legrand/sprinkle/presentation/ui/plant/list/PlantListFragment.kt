@@ -1,20 +1,19 @@
 package fr.legrand.sprinkle.presentation.ui.plant.list
 
+import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
-import fr.legrand.sprinkle.presentation.ui.extensions.hide
-import fr.legrand.sprinkle.presentation.ui.extensions.show
+import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
+import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
@@ -29,18 +28,41 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     @Inject
     lateinit var plantListAdapter: PlantListAdapter
 
+    private val viewModel: PlantListFragmentViewModel by viewModels()
+
     override fun getBinding(view: View) = FragmentPlantListBinding.bind(view)
 
     override fun getLayoutId(): Int = R.layout.fragment_plant_list
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.retrievePlantList()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
-
         binding {
             (requireActivity() as AppCompatActivity).setSupportActionBar(fragmentPlantListToolbar)
+        }
 
+        setupRecyclerView()
+        setupBottomSheet()
+        observePlantList()
+    }
+
+    private fun observePlantList() {
+        viewModel.getPlantListLiveData().observeSafe(viewLifecycleOwner) {
+            plantListAdapter.setItems(it)
+            binding {
+                fragmentPlantListRecyclerView.setVisible(it.isNotEmpty())
+                fragmentPlantListPlaceholderGroup.setVisible(it.isEmpty())
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        binding {
             fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
@@ -63,25 +85,42 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                     }
                 }
             )
-
-            fragmentPlantListPlaceholderGroup.show()
-            fragmentPlantListRecyclerView.hide()
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.plant_list_menu, menu)
+    private fun setupBottomSheet() {
+        binding {
+            BottomSheetBehavior.from(fragmentPlantListBottomsheet).state = BottomSheetBehavior.STATE_HIDDEN
+
+            fragmentPlantListActions.setOnClickListener {
+                changeBottomSheetState()
+            }
+
+            fragmentPlantListSprinkleAllActionArea.setOnClickListener {
+                // TODO sprinkle all
+                changeBottomSheetState()
+            }
+
+            fragmentPlantListDeletePlantsArea.setOnClickListener {
+                // TODO delete UI
+                changeBottomSheetState()
+            }
+
+            fragmentPlantListFertilizeArea.setOnClickListener {
+                // TODO fertilize all
+                changeBottomSheetState()
+            }
+        }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.plant_list_sprinkle_all_action -> {
-                // TODO sprinkle all
-                Toast.makeText(requireContext(), "Sprinkle all", Toast.LENGTH_SHORT).show()
-                true
+    private fun changeBottomSheetState() {
+        binding {
+            val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
+            behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                BottomSheetBehavior.STATE_HIDDEN
+            } else {
+                BottomSheetBehavior.STATE_EXPANDED
             }
-            else -> super.onOptionsItemSelected(item)
         }
     }
 }
-

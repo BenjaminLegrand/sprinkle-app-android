@@ -20,11 +20,23 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="TextAppearance.Sprinkle.Toolbar.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">?titleTextColor</item>
+    </style>
+
     <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textColor">?textColorPrimaryDark</item>
     </style>
 
     <style name="TextAppearance.Sprinkle.Headline2.Light">
+        <item name="android:textColor">?textColorPrimaryLight</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">?textColorPrimaryDark</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Headline4.Light">
         <item name="android:textColor">?textColorPrimaryLight</item>
     </style>
 

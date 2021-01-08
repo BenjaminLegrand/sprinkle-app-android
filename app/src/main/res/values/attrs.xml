@@ -2,4 +2,5 @@
 <resources>
     <attr name="textColorPrimaryDark"/>
     <attr name="textColorPrimaryLight"/>
+    <attr name="separatorColor"/>
 </resources>
