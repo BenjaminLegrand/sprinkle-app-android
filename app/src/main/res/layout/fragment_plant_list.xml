@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/fragment_plant_list_toolbar"
             android:layout_width="match_parent"
@@ -39,9 +40,9 @@
                     android:layout_width="@dimen/toolbar_icon_size"
                     android:layout_height="@dimen/toolbar_icon_size"
                     android:layout_marginEnd="@dimen/base_margin"
+                    android:background="?selectableItemBackgroundBorderless"
                     android:padding="@dimen/toolbar_icon_padding"
                     android:src="@drawable/ic_overflow"
-                    android:background="?selectableItemBackgroundBorderless"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/fragment_plant_list_toolbar_title"
@@ -103,6 +104,12 @@
             tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/fragment_plant_list_bottom_sheet_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bottomsheet_background_color" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_plant_list_bottomsheet"
