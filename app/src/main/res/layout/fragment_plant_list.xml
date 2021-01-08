@@ -41,6 +41,7 @@
                     android:layout_marginEnd="@dimen/base_margin"
                     android:padding="@dimen/toolbar_icon_padding"
                     android:src="@drawable/ic_overflow"
+                    android:background="?selectableItemBackgroundBorderless"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/fragment_plant_list_toolbar_title"

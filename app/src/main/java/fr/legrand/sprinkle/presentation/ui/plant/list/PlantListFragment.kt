@@ -1,7 +1,7 @@
 package fr.legrand.sprinkle.presentation.ui.plant.list
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
@@ -17,7 +17,11 @@ import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
+import kotlin.math.max
 import kotlin.time.ExperimentalTime
+
+private const val MAX_ALPHA = 1.0f
+private const val MIN_ALPHA = 0.4f
 
 @ExperimentalTime
 @AndroidEntryPoint
@@ -90,7 +94,19 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
     private fun setupBottomSheet() {
         binding {
-            BottomSheetBehavior.from(fragmentPlantListBottomsheet).state = BottomSheetBehavior.STATE_HIDDEN
+            val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
+            behavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    Log.i("SLIDE", "$slideOffset")
+                    root.alpha = max((MAX_ALPHA - slideOffset), MIN_ALPHA)
+                }
+
+                override fun onStateChanged(bottomSheet: View, newState: Int) { /* Nothing to do */
+                }
+
+            })
 
             fragmentPlantListActions.setOnClickListener {
                 changeBottomSheetState()
