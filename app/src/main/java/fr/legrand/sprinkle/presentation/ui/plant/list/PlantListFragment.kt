@@ -11,8 +11,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
+import fr.legrand.sprinkle.presentation.ui.extensions.hide
 import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
 import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
+import fr.legrand.sprinkle.presentation.ui.extensions.show
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
@@ -32,6 +34,8 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
     private val viewModel: PlantListFragmentViewModel by viewModels()
 
+    private var deletionEnabled = false
+
     override fun getBinding(view: View) = FragmentPlantListBinding.bind(view)
 
     override fun getLayoutId(): Int = R.layout.fragment_plant_list
@@ -50,8 +54,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
         setupRecyclerView()
         setupBottomSheet()
+        setupDeletion()
         observePlantList()
     }
+
 
     private fun observePlantList() {
         viewModel.getPlantListLiveData().observeSafe(viewLifecycleOwner) {
@@ -81,6 +87,8 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                 object : RecyclerView.OnScrollListener() {
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         super.onScrolled(recyclerView, dx, dy)
+                        if (deletionEnabled) return
+
                         if (dy > 0 && fragmentPlantListCreateFab.isShown) {
                             // Scroll in bottom direction
                             fragmentPlantListCreateFab.hide()
@@ -122,6 +130,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             }
 
             fragmentPlantListDeletePlantsArea.setOnClickListener {
+                displayDeletionUI()
                 plantListAdapter.setDeletionEnabled(true)
                 changeBottomSheetState()
             }
@@ -130,6 +139,37 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                 // TODO fertilize all
                 changeBottomSheetState()
             }
+        }
+    }
+
+
+    private fun setupDeletion() {
+        binding {
+            fragmentPlantListDeleteCancelButton.setOnClickListener {
+                hideDeletionUI()
+            }
+            fragmentPlantListDeleteConfirmButton.setOnClickListener {
+                //TODO trigger deletion
+                hideDeletionUI()
+            }
+        }
+    }
+
+    private fun hideDeletionUI() {
+        deletionEnabled = false
+        plantListAdapter.setDeletionEnabled(false)
+        binding {
+            fragmentPlantListCreateFab.show()
+            fragmentPlantListDeleteButtonsLayout.hide()
+        }
+    }
+
+    private fun displayDeletionUI() {
+        deletionEnabled = true
+        plantListAdapter.setDeletionEnabled(true)
+        binding {
+            fragmentPlantListCreateFab.hide()
+            fragmentPlantListDeleteButtonsLayout.show()
         }
     }
 

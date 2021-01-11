@@ -31,7 +31,6 @@ class PlantListAdapter @Inject constructor() :
         val wrapper = currentItems[position]
         val deleted = deletedItems.contains(wrapper.getId())
 
-        // TODO check for deletion state
         val updatedListener: (Int) -> Unit = {
             if (deletionEnabled && deleted) {
                 deletedItems.remove(it)

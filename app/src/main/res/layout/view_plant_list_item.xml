@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/base_margin_double"
-    android:layout_marginVertical="@dimen/base_margin">
+    android:paddingHorizontal="@dimen/base_margin_double"
+    android:paddingVertical="@dimen/base_margin">
 
     <ImageView
         android:id="@+id/view_plant_list_item_image"
