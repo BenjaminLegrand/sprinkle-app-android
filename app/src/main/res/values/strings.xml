@@ -12,6 +12,9 @@
     <string name="plant_list_actions_title">Actions</string>
     <string name="delete_plants_title">Supprimer des plantes</string>
     <string name="fertilize_title">Mettre de l\'engrais</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_other_section_title">Autres</string>
+    <string name="settings_version_label">Version</string>
     <plurals name="next_sprinkle_date_format">
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>

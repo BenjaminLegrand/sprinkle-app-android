@@ -5,4 +5,9 @@
         android:id="@id/plantListFragment"
         android:icon="@drawable/ic_flower"
         android:title="@string/plant_list_title" />
+
+    <item
+        android:id="@id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings_title" />
 </menu>

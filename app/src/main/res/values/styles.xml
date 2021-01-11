@@ -24,6 +24,14 @@
         <item name="android:textColor">?titleTextColor</item>
     </style>
 
+    <style name="TextAppearance.Sprinkle.Settings.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Settings.Value" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?textColorSecondaryDark</item>
+    </style>
+
     <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textColor">?textColorPrimaryDark</item>
     </style>
