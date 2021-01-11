@@ -64,6 +64,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     }
 
     private fun setupRecyclerView() {
+        plantListAdapter.onItemsDeleted = {
+            // TODO trigger deletion
+        }
+
         binding {
             fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -118,7 +122,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             }
 
             fragmentPlantListDeletePlantsArea.setOnClickListener {
-                // TODO delete UI
+                plantListAdapter.setDeletionEnabled(true)
                 changeBottomSheetState()
             }
 

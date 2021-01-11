@@ -13,7 +13,12 @@ import kotlin.time.ExperimentalTime
 class PlantListAdapter @Inject constructor() :
     ListAdapter<PlantViewDataWrapper, PlantListViewHolder>(diffUtil) {
 
+    var onItemsDeleted: (List<Int>) -> Unit = {}
+    var onPlantClickListener: (Int) -> Unit = {}
+
+    private var deletionEnabled = false
     private val currentItems = mutableListOf<PlantViewDataWrapper>()
+    private val deletedItems = mutableListOf<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantListViewHolder {
         return PlantListViewHolder(
@@ -23,12 +28,36 @@ class PlantListAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: PlantListViewHolder, position: Int) {
-        holder.bind(currentItems[position])
+        val wrapper = currentItems[position]
+        val deleted = deletedItems.contains(wrapper.getId())
+
+        // TODO check for deletion state
+        val updatedListener: (Int) -> Unit = {
+            if (deletionEnabled && deleted) {
+                deletedItems.remove(it)
+                notifyItemChanged(holder.adapterPosition)
+            } else if (deletionEnabled) {
+                deletedItems.add(it)
+                notifyItemChanged(holder.adapterPosition)
+            } else {
+                onPlantClickListener
+            }
+        }
+
+        holder.bind(wrapper, updatedListener, deleted)
     }
 
     fun setItems(newItems: List<PlantViewDataWrapper>) {
         currentItems.clear()
         currentItems.addAll(newItems)
+        submitList(currentItems)
+    }
+
+    fun setDeletionEnabled(enabled: Boolean) {
+        deletionEnabled = enabled
+        if (!enabled) {
+            deletedItems.clear()
+        }
         submitList(currentItems)
     }
 }
