@@ -11,9 +11,13 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
         <item name="textColorPrimaryLight">@android:color/primary_text_dark</item>
         <item name="textColorPrimaryDark">@android:color/primary_text_light</item>
+        <item name="textColorSecondaryLight">@android:color/tertiary_text_dark</item>
+        <item name="textColorSecondaryDark">@android:color/tertiary_text_light</item>
+
         <item name="separatorColor">#BDBDBD</item>
         <item name="colorSurface">#FFFFFF</item>
         <item name="colorError">#D32F2F</item>

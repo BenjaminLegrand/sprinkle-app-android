@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Sprinkle</string>
 
+    <!--  Plant list  -->
     <string name="plant_list_title">Mes plantes</string>
     <string name="last_sprinkle_date_format">Arrosée le %s</string>
     <string name="last_sprinkle_date_unknown">Jamais arrosée</string>
@@ -18,4 +19,10 @@
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>
     </plurals>
+
+    <!--  Settings  -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_other_section_title">Autres</string>
+    <string name="settings_version_label">Version</string>
+
 </resources>
