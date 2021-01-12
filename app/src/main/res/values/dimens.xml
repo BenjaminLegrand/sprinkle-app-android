@@ -14,7 +14,10 @@
     <dimen name="base_separator_height">0.5dp</dimen>
     <dimen name="bottomsheet_peek_height">200dp</dimen>
     <dimen name="plant_list_bottomsheet_min_height">300dp</dimen>
+    <dimen name="plant_list_delete_shadow_height">4dp</dimen>
 
     <dimen name="settings_content_vertical_margin">24dp</dimen>
     <dimen name="settings_content_horizontal_margin">8dp</dimen>
+    <dimen name="plant_item_delete_state_start_margin">64dp</dimen>
+    <dimen name="view_plant_list_item_delete_indicator_background_width">76dp</dimen>
 </resources>

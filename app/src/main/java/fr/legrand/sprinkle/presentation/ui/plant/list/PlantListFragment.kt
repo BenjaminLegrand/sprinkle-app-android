@@ -70,10 +70,6 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     }
 
     private fun setupRecyclerView() {
-        plantListAdapter.onItemsDeleted = {
-            // TODO trigger deletion
-        }
-
         binding {
             fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
@@ -146,10 +142,12 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     private fun setupDeletion() {
         binding {
             fragmentPlantListDeleteCancelButton.setOnClickListener {
+                plantListAdapter.cancelDeletion()
                 hideDeletionUI()
             }
             fragmentPlantListDeleteConfirmButton.setOnClickListener {
                 //TODO trigger deletion
+                plantListAdapter.deleteSelectedItems()
                 hideDeletionUI()
             }
         }
@@ -160,7 +158,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         plantListAdapter.setDeletionEnabled(false)
         binding {
             fragmentPlantListCreateFab.show()
-            fragmentPlantListDeleteButtonsLayout.hide()
+            fragmentPlantListDeleteButtonsGroup.hide()
         }
     }
 
@@ -169,7 +167,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         plantListAdapter.setDeletionEnabled(true)
         binding {
             fragmentPlantListCreateFab.hide()
-            fragmentPlantListDeleteButtonsLayout.show()
+            fragmentPlantListDeleteButtonsGroup.show()
         }
     }
 

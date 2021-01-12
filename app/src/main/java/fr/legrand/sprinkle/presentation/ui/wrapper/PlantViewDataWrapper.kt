@@ -15,6 +15,8 @@ private const val SPRINKLE_DATE_FORMAT = "dd/MM/yy"
 @ExperimentalTime
 data class PlantViewDataWrapper(private val plant: Plant) {
 
+    var deleting = false
+
     fun getId() = plant.id
 
     fun getName() = plant.name

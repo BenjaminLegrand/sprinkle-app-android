@@ -86,7 +86,7 @@
             android:id="@+id/fragment_plant_list_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_barrier"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_layout"
             app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_toolbar"
             tools:listitem="@layout/view_plant_list_item" />
 
@@ -102,21 +102,29 @@
             app:tint="?colorOnSecondary"
             tools:ignore="ContentDescription" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/fragment_plant_list_delete_buttons_barrier"
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/fragment_plant_list_delete_buttons_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:constraint_referenced_ids="@+id/fragment_plant_list_delete_buttons_layout" />
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:constraint_referenced_ids="fragment_plant_list_delete_shadow,fragment_plant_list_delete_buttons_layout" />
+
+        <View
+            android:id="@+id/fragment_plant_list_delete_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/plant_list_delete_shadow_height"
+            android:background="@drawable/shadow_bottom_gradient"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_layout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fragment_plant_list_delete_buttons_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?colorSurface"
             android:padding="@dimen/base_margin"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_recycler_view"
             tools:visibility="visible">
 
             <Button
@@ -149,7 +157,8 @@
         android:id="@+id/fragment_plant_list_bottom_sheet_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bottomsheet_background_color" />
+        android:background="@color/bottomsheet_background_color"
+        tools:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_plant_list_bottomsheet"

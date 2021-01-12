@@ -12,5 +12,6 @@
     <color name="bottombar_item_unselected_color">#BDBDBD</color>
     
     <color name="bottomsheet_background_color">#88000000</color>
-    <color name="plant_list_item_delete_background_color">#BDBDBD</color>
+    <color name="shadow_gradient_start_color">#33000000</color>
+    <color name="shadow_gradient_end_color">#00000000</color>
 </resources>
