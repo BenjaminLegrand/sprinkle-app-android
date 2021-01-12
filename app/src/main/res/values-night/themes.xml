@@ -17,6 +17,10 @@
         <item name="textColorSecondaryLight">@android:color/tertiary_text_dark</item>
         <item name="textColorSecondaryDark">@android:color/tertiary_text_light</item>
         <item name="separatorColor">#E0E0E0</item>
+<!--        TODO night theme-->
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorError">#D32F2F</item>
+        <item name="colorOnError">#FFFFFF</item>
 
         <item name="actionOverflowButtonStyle">@style/Widget.Sprinkle.OverflowButton</item>
     </style>

@@ -19,6 +19,9 @@
         <item name="textColorSecondaryDark">@android:color/tertiary_text_light</item>
 
         <item name="separatorColor">#BDBDBD</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorError">#D32F2F</item>
+        <item name="colorOnError">#FFFFFF</item>
 
         <item name="actionOverflowButtonStyle">@style/Widget.Sprinkle.OverflowButton</item>
     </style>

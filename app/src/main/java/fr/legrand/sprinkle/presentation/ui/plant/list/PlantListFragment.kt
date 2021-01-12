@@ -2,6 +2,7 @@ package fr.legrand.sprinkle.presentation.ui.plant.list
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -11,8 +12,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
+import fr.legrand.sprinkle.presentation.ui.extensions.hide
 import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
 import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
+import fr.legrand.sprinkle.presentation.ui.extensions.show
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
@@ -32,6 +35,8 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
     private val viewModel: PlantListFragmentViewModel by viewModels()
 
+    private var deletionEnabled = false
+
     override fun getBinding(view: View) = FragmentPlantListBinding.bind(view)
 
     override fun getLayoutId(): Int = R.layout.fragment_plant_list
@@ -50,6 +55,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
         setupRecyclerView()
         setupBottomSheet()
+        setupDeletion()
         observePlantList()
     }
 
@@ -71,12 +77,26 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             fragmentPlantListRecyclerView.addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             )
+
             fragmentPlantListRecyclerView.adapter = plantListAdapter
+
+            plantListAdapter.onPlantClickListener = { id ->
+                // TODO click
+                Toast.makeText(requireContext(), "Click $id", Toast.LENGTH_SHORT).show()
+            }
+
+            plantListAdapter.onItemsDeleted = { ids ->
+                viewModel.deletePlants(ids)
+                fragmentPlantListRecyclerView.setVisible(plantListAdapter.itemCount > 0)
+                fragmentPlantListPlaceholderGroup.setVisible(plantListAdapter.itemCount <= 0)
+            }
 
             fragmentPlantListRecyclerView.addOnScrollListener(
                 object : RecyclerView.OnScrollListener() {
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                         super.onScrolled(recyclerView, dx, dy)
+                        if (deletionEnabled) return
+
                         if (dy > 0 && fragmentPlantListCreateFab.isShown) {
                             // Scroll in bottom direction
                             fragmentPlantListCreateFab.hide()
@@ -95,6 +115,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = BottomSheetBehavior.STATE_HIDDEN
             fragmentPlantListBottomSheetBackground.alpha = MIN_ALPHA
+
+            fragmentPlantListBottomSheetBackground.isClickable = false
+            fragmentPlantListBottomSheetBackground.isFocusable = false
+            fragmentPlantListBottomSheetBackground.setOnClickListener { changeBottomSheetState() }
 
             behavior.addBottomSheetCallback(
                 object : BottomSheetBehavior.BottomSheetCallback() {
@@ -118,7 +142,8 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             }
 
             fragmentPlantListDeletePlantsArea.setOnClickListener {
-                // TODO delete UI
+                displayDeletionUI()
+                plantListAdapter.setDeletionEnabled(true)
                 changeBottomSheetState()
             }
 
@@ -129,12 +154,49 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         }
     }
 
+    private fun setupDeletion() {
+        binding {
+            fragmentPlantListDeleteCancelButton.setOnClickListener {
+                plantListAdapter.cancelDeletion()
+                hideDeletionUI()
+            }
+            fragmentPlantListDeleteConfirmButton.setOnClickListener {
+                // TODO trigger deletion
+                plantListAdapter.deleteSelectedItems()
+                hideDeletionUI()
+            }
+        }
+    }
+
+    private fun hideDeletionUI() {
+        deletionEnabled = false
+        plantListAdapter.setDeletionEnabled(false)
+        binding {
+            fragmentPlantListCreateFab.show()
+            fragmentPlantListDeleteButtonsGroup.hide()
+        }
+    }
+
+    private fun displayDeletionUI() {
+        deletionEnabled = true
+        plantListAdapter.setDeletionEnabled(true)
+        binding {
+            fragmentPlantListCreateFab.hide()
+            fragmentPlantListDeleteButtonsGroup.show()
+        }
+    }
+
     private fun changeBottomSheetState() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                // Disable clicks on background when bottomsheet is hidden
+                fragmentPlantListBottomSheetBackground.isClickable = false
+                fragmentPlantListBottomSheetBackground.isFocusable = false
                 BottomSheetBehavior.STATE_HIDDEN
             } else {
+                fragmentPlantListBottomSheetBackground.isClickable = true
+                fragmentPlantListBottomSheetBackground.isFocusable = true
                 BottomSheetBehavior.STATE_EXPANDED
             }
         }

@@ -6,9 +6,21 @@
         <item name="titleTextColor">?colorOnPrimary</item>
     </style>
 
+
     <style name="Widget.Sprinkle.OverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="tint">?colorOnPrimary</item>
     </style>
+
+    <style name="Widget.Sprinkle.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.Sprinkle.Button.Error">
+        <item name="android:backgroundTint">?colorError</item>
+        <item name="android:textColor">?colorOnError</item>
+    </style>
+
 
     <style name="Widget.Sprinkle.TextView" parent="Widget.MaterialComponents.TextView" />
 

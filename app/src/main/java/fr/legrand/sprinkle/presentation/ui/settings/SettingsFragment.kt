@@ -9,7 +9,8 @@ import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentSettingsBinding
 import fr.legrand.viewbinding.extensions.BindingFragment
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 private const val VERSION_FORMAT = "%s_%d_%s"
 
