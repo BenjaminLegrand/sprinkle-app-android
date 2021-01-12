@@ -21,7 +21,6 @@ import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
 import kotlin.time.ExperimentalTime
 
-
 private const val MAX_ALPHA = 1.0f
 private const val MIN_ALPHA = 0.0f
 
@@ -59,7 +58,6 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         setupDeletion()
         observePlantList()
     }
-
 
     private fun observePlantList() {
         viewModel.getPlantListLiveData().observeSafe(viewLifecycleOwner) {
@@ -156,7 +154,6 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         }
     }
 
-
     private fun setupDeletion() {
         binding {
             fragmentPlantListDeleteCancelButton.setOnClickListener {
@@ -164,7 +161,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                 hideDeletionUI()
             }
             fragmentPlantListDeleteConfirmButton.setOnClickListener {
-                //TODO trigger deletion
+                // TODO trigger deletion
                 plantListAdapter.deleteSelectedItems()
                 hideDeletionUI()
             }
@@ -193,7 +190,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                //Disable clicks on background when bottomsheet is hidden
+                // Disable clicks on background when bottomsheet is hidden
                 fragmentPlantListBottomSheetBackground.isClickable = false
                 fragmentPlantListBottomSheetBackground.isFocusable = false
                 BottomSheetBehavior.STATE_HIDDEN

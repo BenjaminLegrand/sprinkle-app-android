@@ -41,7 +41,7 @@ class PlantListAdapter @Inject constructor() : ListAdapter<PlantViewDataWrapper,
 
         val updatedListener: (Int) -> Unit = {
             if (deletionEnabled) {
-                //Use indexOf as list can be updated
+                // Use indexOf as list can be updated
                 onWrapperDeletedStateChanged(currentItems.indexOf(wrapper), wrapper, !wrapper.deleting)
             } else {
                 onPlantClickListener(it)

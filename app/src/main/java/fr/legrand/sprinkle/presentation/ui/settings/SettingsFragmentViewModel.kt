@@ -4,4 +4,5 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 
 class SettingsFragmentViewModel @ViewModelInject constructor(): ViewModel() {
+    // TODO implement
 }
