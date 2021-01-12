@@ -23,5 +23,10 @@ class PlantListFragmentViewModel @ViewModelInject constructor() : ViewModel() {
         })
     }
 
+    fun deletePlants(plantIds: List<Int>) {
+        // TODO implement this
+    }
+
     fun getPlantListLiveData(): LiveData<List<PlantViewDataWrapper>> = plantListLiveData
+
 }

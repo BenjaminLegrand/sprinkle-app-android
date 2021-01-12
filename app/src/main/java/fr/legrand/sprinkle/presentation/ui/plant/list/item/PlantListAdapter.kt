@@ -13,6 +13,7 @@ import kotlin.time.ExperimentalTime
 class PlantListAdapter @Inject constructor() : ListAdapter<PlantViewDataWrapper, PlantListViewHolder>(diffUtil) {
 
     var onPlantClickListener: (Int) -> Unit = {}
+    var onItemsDeleted: (List<Int>) -> Unit = {}
 
     private var deletionEnabled = false
     private val currentItems = mutableListOf<PlantViewDataWrapper>()
@@ -40,9 +41,10 @@ class PlantListAdapter @Inject constructor() : ListAdapter<PlantViewDataWrapper,
 
         val updatedListener: (Int) -> Unit = {
             if (deletionEnabled) {
-                onWrapperDeletedStateChanged(position, wrapper, !wrapper.deleting)
+                //Use indexOf as list can be updated
+                onWrapperDeletedStateChanged(currentItems.indexOf(wrapper), wrapper, !wrapper.deleting)
             } else {
-                onPlantClickListener
+                onPlantClickListener(it)
             }
         }
 
@@ -54,19 +56,20 @@ class PlantListAdapter @Inject constructor() : ListAdapter<PlantViewDataWrapper,
     fun setItems(newItems: List<PlantViewDataWrapper>) {
         currentItems.clear()
         currentItems.addAll(newItems)
-        submitList(currentItems)
+        submitList(currentItems.toMutableList())
     }
 
     fun deleteSelectedItems() {
+        val deletedItems = currentItems.filter { it.deleting }.map { it.getId() }
         currentItems.removeAll { it.deleting }
-        submitList(currentItems)
+        submitList(currentItems.toMutableList())
+        onItemsDeleted(deletedItems)
     }
 
     fun cancelDeletion() {
         currentItems.forEachIndexed { index, wrapper ->
             onWrapperDeletedStateChanged(index, wrapper, false)
         }
-        submitList(currentItems)
     }
 
     fun setDeletionEnabled(enabled: Boolean) {
@@ -84,7 +87,7 @@ private val diffUtil = object : DiffUtil.ItemCallback<PlantViewDataWrapper>() {
     override fun areItemsTheSame(
         oldItem: PlantViewDataWrapper,
         newItem: PlantViewDataWrapper
-    ): Boolean = oldItem.getId() == newItem.getId() && oldItem.deleting == newItem.deleting
+    ): Boolean = oldItem.getId() == newItem.getId()
 
     override fun areContentsTheSame(
         oldItem: PlantViewDataWrapper,

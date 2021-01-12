@@ -2,6 +2,7 @@ package fr.legrand.sprinkle.presentation.ui.plant.list
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,6 +20,7 @@ import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
 import kotlin.time.ExperimentalTime
+
 
 private const val MAX_ALPHA = 1.0f
 private const val MIN_ALPHA = 0.0f
@@ -77,7 +79,19 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             fragmentPlantListRecyclerView.addItemDecoration(
                 DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             )
+
             fragmentPlantListRecyclerView.adapter = plantListAdapter
+
+            plantListAdapter.onPlantClickListener = { id ->
+                // TODO click
+                Toast.makeText(requireContext(), "Click $id", Toast.LENGTH_SHORT).show()
+            }
+
+            plantListAdapter.onItemsDeleted = { ids ->
+                viewModel.deletePlants(ids)
+                fragmentPlantListRecyclerView.setVisible(plantListAdapter.itemCount > 0)
+                fragmentPlantListPlaceholderGroup.setVisible(plantListAdapter.itemCount <= 0)
+            }
 
             fragmentPlantListRecyclerView.addOnScrollListener(
                 object : RecyclerView.OnScrollListener() {
@@ -103,6 +117,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = BottomSheetBehavior.STATE_HIDDEN
             fragmentPlantListBottomSheetBackground.alpha = MIN_ALPHA
+
+            fragmentPlantListBottomSheetBackground.isClickable = false
+            fragmentPlantListBottomSheetBackground.isFocusable = false
+            fragmentPlantListBottomSheetBackground.setOnClickListener { changeBottomSheetState() }
 
             behavior.addBottomSheetCallback(
                 object : BottomSheetBehavior.BottomSheetCallback() {
@@ -175,8 +193,13 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                //Disable clicks on background when bottomsheet is hidden
+                fragmentPlantListBottomSheetBackground.isClickable = false
+                fragmentPlantListBottomSheetBackground.isFocusable = false
                 BottomSheetBehavior.STATE_HIDDEN
             } else {
+                fragmentPlantListBottomSheetBackground.isClickable = true
+                fragmentPlantListBottomSheetBackground.isFocusable = true
                 BottomSheetBehavior.STATE_EXPANDED
             }
         }
