@@ -10,6 +10,8 @@ import fr.legrand.sprinkle.presentation.ui.splash.navigator.SplashscreenActivity
 import fr.legrand.viewbinding.extensions.BindingActivity
 import javax.inject.Inject
 
+private const val TEST_DELAY = 2000L
+
 @AndroidEntryPoint
 class SplashscreenActivity : BindingActivity<ActivitySplashscreenBinding>() {
 
@@ -22,9 +24,9 @@ class SplashscreenActivity : BindingActivity<ActivitySplashscreenBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // TODO load referential data before navigating
-        Handler(Looper.getMainLooper()).postDelayed({
-            navigator.displayMainActivity(this)
-        }, 2000)
-
+        Handler(Looper.getMainLooper()).postDelayed(
+            { navigator.displayMainActivity(this) },
+            TEST_DELAY
+        )
     }
 }
