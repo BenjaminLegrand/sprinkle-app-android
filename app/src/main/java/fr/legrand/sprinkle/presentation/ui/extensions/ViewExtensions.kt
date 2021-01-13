@@ -17,3 +17,14 @@ fun View.setVisible(visible: Boolean) {
         hide()
     }
 }
+
+private const val DOUBLE_CLICK_DELAY = 300
+fun View.setOnClickDelayListener(listener: () -> Unit) {
+    var lastClick = 0L
+    setOnClickListener {
+        if (System.currentTimeMillis() - lastClick > DOUBLE_CLICK_DELAY) {
+            lastClick = System.currentTimeMillis()
+            listener()
+        }
+    }
+}

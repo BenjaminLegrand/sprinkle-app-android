@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.legrand.sprinkle.R
+import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
 import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_image
 import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_last_sprinkle_date
@@ -30,7 +31,7 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 .error(R.drawable.ic_sunflower)
                 .into(view_plant_list_item_image)
 
-            setOnClickListener { onPlantClickListener(plant.getId()) }
+            setOnClickDelayListener { onPlantClickListener(plant.getId()) }
         }
     }
 
