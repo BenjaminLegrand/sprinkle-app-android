@@ -1,5 +1,7 @@
 package fr.legrand.sprinkle.presentation.ui.plant.list.item
 
-data class PlantItemDeleteState(
-    val state: Boolean
-)
+enum class PlantItemDeleteState {
+    IDLE,
+    DELETING,
+    DELETED
+}

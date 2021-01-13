@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,11 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
-import fr.legrand.sprinkle.presentation.ui.extensions.hide
-import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
-import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
-import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
-import fr.legrand.sprinkle.presentation.ui.extensions.show
+import fr.legrand.sprinkle.presentation.ui.extensions.*
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
