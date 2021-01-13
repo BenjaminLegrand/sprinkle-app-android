@@ -14,6 +14,7 @@ import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
 import fr.legrand.sprinkle.presentation.ui.extensions.hide
 import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
+import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
 import fr.legrand.sprinkle.presentation.ui.extensions.show
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
@@ -115,10 +116,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = BottomSheetBehavior.STATE_HIDDEN
             fragmentPlantListBottomSheetBackground.alpha = MIN_ALPHA
-
-            fragmentPlantListBottomSheetBackground.isClickable = false
-            fragmentPlantListBottomSheetBackground.isFocusable = false
-            fragmentPlantListBottomSheetBackground.setOnClickListener { changeBottomSheetState() }
+            fragmentPlantListBottomSheetBackground.setOnClickDelayListener { changeBottomSheetState() }
 
             behavior.addBottomSheetCallback(
                 object : BottomSheetBehavior.BottomSheetCallback() {
@@ -127,40 +125,51 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
                     }
 
                     override fun onStateChanged(bottomSheet: View, newState: Int) {
-                        /* Nothing to do */
+                        if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                            fragmentPlantListBottomSheetBackground.hide()
+                        } else if (newState == BottomSheetBehavior.STATE_SETTLING) {
+                            fragmentPlantListBottomSheetBackground.show()
+                        }
                     }
                 }
             )
 
-            fragmentPlantListActions.setOnClickListener {
+            fragmentPlantListActions.setOnClickDelayListener {
                 changeBottomSheetState()
             }
 
-            fragmentPlantListSprinkleAllActionArea.setOnClickListener {
+            fragmentPlantListSprinkleAllActionArea.setOnClickDelayListener {
                 // TODO sprinkle all
+                if (deletionEnabled) {
+                    hideDeletionUI()
+                }
                 changeBottomSheetState()
+                Toast.makeText(requireContext(), "SPRINKLE ALL", Toast.LENGTH_SHORT).show()
             }
 
-            fragmentPlantListDeletePlantsArea.setOnClickListener {
+            fragmentPlantListDeletePlantsArea.setOnClickDelayListener {
                 displayDeletionUI()
-                plantListAdapter.setDeletionEnabled(true)
                 changeBottomSheetState()
             }
 
-            fragmentPlantListFertilizeArea.setOnClickListener {
+            fragmentPlantListFertilizeArea.setOnClickDelayListener {
                 // TODO fertilize all
+                if (deletionEnabled) {
+                    hideDeletionUI()
+                }
                 changeBottomSheetState()
+                Toast.makeText(requireContext(), "FERTILIZE ALL", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setupDeletion() {
         binding {
-            fragmentPlantListDeleteCancelButton.setOnClickListener {
+            fragmentPlantListDeleteCancelButton.setOnClickDelayListener {
                 plantListAdapter.cancelDeletion()
                 hideDeletionUI()
             }
-            fragmentPlantListDeleteConfirmButton.setOnClickListener {
+            fragmentPlantListDeleteConfirmButton.setOnClickDelayListener {
                 // TODO trigger deletion
                 plantListAdapter.deleteSelectedItems()
                 hideDeletionUI()
@@ -190,13 +199,8 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
             behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                // Disable clicks on background when bottomsheet is hidden
-                fragmentPlantListBottomSheetBackground.isClickable = false
-                fragmentPlantListBottomSheetBackground.isFocusable = false
                 BottomSheetBehavior.STATE_HIDDEN
             } else {
-                fragmentPlantListBottomSheetBackground.isClickable = true
-                fragmentPlantListBottomSheetBackground.isFocusable = true
                 BottomSheetBehavior.STATE_EXPANDED
             }
         }
