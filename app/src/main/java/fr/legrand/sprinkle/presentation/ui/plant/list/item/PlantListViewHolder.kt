@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.legrand.sprinkle.R
-import fr.legrand.sprinkle.presentation.ui.extensions.onTransitionEnd
 import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
 import kotlinx.android.synthetic.main.view_plant_list_item.view.*
@@ -15,6 +14,8 @@ private const val MAX_PROGRESS = 1f
 @ExperimentalTime
 class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    private var currentState = PlantItemDeleteState.IDLE
+
     fun bind(plant: PlantViewDataWrapper, onPlantClickListener: (Int) -> Unit) {
         with(itemView) {
             view_plant_list_item_name.text = plant.getName()
@@ -23,6 +24,22 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             view_plant_list_item_next_sprinkle_date.text =
                 plant.getFormattedNextSprinkleDate(context)
 
+            view_plant_list_item_motion_layout.addOnAttachStateChangeListener(object :
+                View.OnAttachStateChangeListener {
+                override fun onViewAttachedToWindow(p0: View?) {
+                    /*When detached from Window, MotionLayout seems to reset its state -> when reattaching (every time we scroll,
+                    current view is reattached), we simply set the currentState*/
+                    setDeleteState(
+                        if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
+                        instantTransition = true
+                    )
+                }
+
+                override fun onViewDetachedFromWindow(p0: View?) {
+                    //Nothing to do
+                }
+
+            })
             setDeleteState(
                 if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
                 instantTransition = true
@@ -39,26 +56,32 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun setDeleteState(
         state: PlantItemDeleteState,
-        instantTransition: Boolean = false,
-        onTransitionEnd: () -> Unit = {}
+        instantTransition: Boolean = false
     ) {
         with(itemView) {
             when (state) {
                 PlantItemDeleteState.IDLE ->
-                    view_plant_list_item_motion_layout.transitionToState(R.id.view_plant_list_item_state_idle)
+                    if (currentState == PlantItemDeleteState.DELETING) {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_idle)
+                    } else {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_idle_to_idle)
+                    }
                 PlantItemDeleteState.DELETING ->
-                    view_plant_list_item_motion_layout.transitionToState(R.id.view_plant_list_item_state_deleting)
+                    if (currentState == PlantItemDeleteState.IDLE) {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_idle_to_deleting)
+                    } else {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_deleting)
+                    }
                 PlantItemDeleteState.DELETED ->
-                    view_plant_list_item_motion_layout.transitionToState(R.id.view_plant_list_item_state_deleted)
+                    view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_deleted)
             }
 
             if (instantTransition) {
                 view_plant_list_item_motion_layout.progress = MAX_PROGRESS
+            } else {
+                view_plant_list_item_motion_layout.transitionToEnd()
             }
-
-            view_plant_list_item_motion_layout.onTransitionEnd {
-                onTransitionEnd()
-            }
+            currentState = state
         }
     }
 }

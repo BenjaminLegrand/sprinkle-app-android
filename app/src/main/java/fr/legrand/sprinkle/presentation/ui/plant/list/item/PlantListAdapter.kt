@@ -1,15 +1,22 @@
 package fr.legrand.sprinkle.presentation.ui.plant.list.item
 
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import dagger.hilt.android.qualifiers.ApplicationContext
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
 import javax.inject.Inject
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
-class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListViewHolder>() {
+class PlantListAdapter @Inject constructor(
+    @ApplicationContext private val context: Context
+) : ListAdapter<PlantViewDataWrapper, PlantListViewHolder>(diffUtil) {
 
     var onPlantClickListener: (Int) -> Unit = {}
     var onItemsDeleted: (List<Int>) -> Unit = {}
@@ -30,11 +37,7 @@ class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListVie
         } else {
             val deleteState = payloads.firstOrNull { it is PlantItemDeleteState }
             (deleteState as? PlantItemDeleteState)?.let {
-                holder.setDeleteState(it) {
-                    if (it == PlantItemDeleteState.DELETED) {
-                        notifyItemRemoved(position)
-                    }
-                }
+                holder.setDeleteState(it)
             } ?: super.onBindViewHolder(holder, position, payloads)
         }
     }
@@ -64,7 +67,7 @@ class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListVie
     fun setItems(newItems: List<PlantViewDataWrapper>) {
         currentItems.clear()
         currentItems.addAll(newItems)
-        notifyDataSetChanged()
+        submitList(currentItems.toList())
     }
 
     fun deleteSelectedItems() {
@@ -74,9 +77,18 @@ class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListVie
             }
         }
 
-        val deletedItems = currentItems.filter { it.deleting }.map { it.getId() }
-        currentItems.removeAll { it.deleting }
-        onItemsDeleted(deletedItems)
+        //Run code on main looper when all animations have ended
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                val deletedItems = currentItems.filter { it.deleting }.map { it.getId() }
+                currentItems.removeAll { it.deleting }
+                submitList(currentItems.toList())
+                onItemsDeleted(deletedItems)
+            },
+            context.resources.getInteger(R.integer.plant_delete_anim_time).toLong()
+        )
+
+
     }
 
     fun cancelDeletion() {
@@ -96,4 +108,17 @@ class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListVie
         }
         notifyItemChanged(index, state)
     }
+}
+
+@ExperimentalTime
+private val diffUtil = object : DiffUtil.ItemCallback<PlantViewDataWrapper>() {
+    override fun areItemsTheSame(
+        oldItem: PlantViewDataWrapper,
+        newItem: PlantViewDataWrapper
+    ): Boolean = oldItem.getId() == newItem.getId()
+
+    override fun areContentsTheSame(
+        oldItem: PlantViewDataWrapper,
+        newItem: PlantViewDataWrapper
+    ): Boolean = oldItem == newItem
 }

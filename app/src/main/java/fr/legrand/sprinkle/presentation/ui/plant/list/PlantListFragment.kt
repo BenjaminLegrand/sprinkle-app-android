@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,12 +69,7 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
     private fun setupRecyclerView() {
         binding {
-            fragmentPlantListRecyclerView.layoutManager = object : LinearLayoutManager(context) {
-                override fun supportsPredictiveItemAnimations(): Boolean {
-                    //Prevents "Inconsistency detected" errors
-                    return false
-                }
-            }.apply {
+            fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
             fragmentPlantListRecyclerView.addItemDecoration(
