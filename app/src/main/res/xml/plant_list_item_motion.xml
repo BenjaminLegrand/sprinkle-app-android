@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:defaultDuration="@integer/plant_delete_anim_time">
 
+    <!--  Default transition used to init the view in IDLE state when setting progress  -->
     <Transition
-        android:id="@+id/view_plant_list_item_transition_idle_to_deleting"
+        app:constraintSetEnd="@id/view_plant_list_item_state_idle"
+        app:constraintSetStart="@id/view_plant_list_item_state_idle" />
+
+    <Transition
         app:constraintSetEnd="@id/view_plant_list_item_state_deleting"
         app:constraintSetStart="@id/view_plant_list_item_state_idle" />
 
     <Transition
-        android:id="@+id/view_plant_list_item_transition_deleting_to_idle"
         app:constraintSetEnd="@id/view_plant_list_item_state_idle"
         app:constraintSetStart="@id/view_plant_list_item_state_deleting" />
 
     <Transition
-        android:id="@+id/view_plant_list_item_transition_deleted_to_idle"
         app:constraintSetEnd="@id/view_plant_list_item_state_idle"
         app:constraintSetStart="@id/view_plant_list_item_state_deleted" />
 
     <Transition
-        android:id="@+id/view_plant_list_item_transition_deleting_to_deleted"
         app:constraintSetEnd="@id/view_plant_list_item_state_deleted"
         app:constraintSetStart="@id/view_plant_list_item_state_deleting" />
 

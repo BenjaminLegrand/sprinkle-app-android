@@ -44,12 +44,12 @@ class PlantListAdapter @Inject constructor() : RecyclerView.Adapter<PlantListVie
 
         val updatedListener: (Int) -> Unit = {
             if (deletionEnabled) {
-                // Use indexOf as list can be updated
                 val newState = if (wrapper.deleting) {
                     PlantItemDeleteState.IDLE
                 } else {
                     PlantItemDeleteState.DELETING
                 }
+                // Use indexOf as list can be updated between binds
                 onWrapperDeletedStateChanged(currentItems.indexOf(wrapper), wrapper, newState)
             } else {
                 onPlantClickListener(it)

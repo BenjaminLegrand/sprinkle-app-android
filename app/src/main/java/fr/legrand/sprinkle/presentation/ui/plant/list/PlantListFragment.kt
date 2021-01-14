@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -69,7 +68,12 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
 
     private fun setupRecyclerView() {
         binding {
-            fragmentPlantListRecyclerView.layoutManager = LinearLayoutManager(context).apply {
+            fragmentPlantListRecyclerView.layoutManager = object : LinearLayoutManager(context) {
+                override fun supportsPredictiveItemAnimations(): Boolean {
+                    //Prevents "Inconsistency detected" errors
+                    return false
+                }
+            }.apply {
                 orientation = LinearLayoutManager.VERTICAL
             }
             fragmentPlantListRecyclerView.addItemDecoration(
@@ -195,10 +199,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     private fun changeBottomSheetState() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
-            behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                BottomSheetBehavior.STATE_HIDDEN
-            } else {
-                BottomSheetBehavior.STATE_EXPANDED
+            if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                behavior.state = BottomSheetBehavior.STATE_HIDDEN
+            } else if (behavior.state == BottomSheetBehavior.STATE_HIDDEN) {
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
         }
     }
