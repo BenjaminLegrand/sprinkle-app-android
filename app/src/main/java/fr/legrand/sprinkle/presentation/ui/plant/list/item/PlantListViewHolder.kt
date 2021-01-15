@@ -13,8 +13,12 @@ import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_
 import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_next_sprinkle_date
 import kotlin.time.ExperimentalTime
 
+private const val MAX_PROGRESS = 1f
+
 @ExperimentalTime
 class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    private var currentState = PlantItemDeleteState.IDLE
 
     fun bind(plant: PlantViewDataWrapper, onPlantClickListener: (Int) -> Unit) {
         with(itemView) {
@@ -24,7 +28,27 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             view_plant_list_item_next_sprinkle_date.text =
                 plant.getFormattedNextSprinkleDate(context)
 
-            setDeleteState(plant.deleting)
+            view_plant_list_item_motion_layout.addOnAttachStateChangeListener(
+                object : View.OnAttachStateChangeListener {
+                    override fun onViewAttachedToWindow(p0: View?) {
+                        /*When detached from Window, MotionLayout seems to reset its state ->
+                        When reattaching (every time we scroll, current view is reattached),
+                        we simply set the currentState */
+                        setDeleteState(
+                            if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
+                            instantTransition = true
+                        )
+                    }
+
+                    override fun onViewDetachedFromWindow(p0: View?) {
+                        // Nothing to do
+                    }
+                }
+            )
+            setDeleteState(
+                if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
+                instantTransition = true
+            )
 
             Glide.with(context)
                 .load(plant.getImageUrl())
@@ -35,13 +59,34 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    fun setDeleteState(state: Boolean) {
+    fun setDeleteState(
+        state: PlantItemDeleteState,
+        instantTransition: Boolean = false
+    ) {
         with(itemView) {
-            if (state) {
-                view_plant_list_item_motion_layout.transitionToEnd()
-            } else {
-                view_plant_list_item_motion_layout.transitionToStart()
+            when (state) {
+                PlantItemDeleteState.IDLE ->
+                    if (currentState == PlantItemDeleteState.DELETING) {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_idle)
+                    } else {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_idle_to_idle)
+                    }
+                PlantItemDeleteState.DELETING ->
+                    if (currentState == PlantItemDeleteState.IDLE) {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_idle_to_deleting)
+                    } else {
+                        view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_deleting)
+                    }
+                PlantItemDeleteState.DELETED ->
+                    view_plant_list_item_motion_layout.setTransition(R.id.view_plant_list_item_transition_deleting_to_deleted)
             }
+
+            if (instantTransition) {
+                view_plant_list_item_motion_layout.progress = MAX_PROGRESS
+            } else {
+                view_plant_list_item_motion_layout.transitionToEnd()
+            }
+            currentState = state
         }
     }
 }

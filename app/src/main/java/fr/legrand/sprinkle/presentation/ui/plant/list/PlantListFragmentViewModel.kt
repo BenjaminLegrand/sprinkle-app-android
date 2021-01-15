@@ -12,7 +12,7 @@ import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
-private const val TEST_LIST_SIZE = 10
+private const val TEST_LIST_SIZE = 20
 
 @ExperimentalTime
 class PlantListFragmentViewModel @ViewModelInject constructor() : ViewModel() {

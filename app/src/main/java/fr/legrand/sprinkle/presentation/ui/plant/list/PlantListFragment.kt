@@ -198,10 +198,10 @@ class PlantListFragment : BindingFragment<FragmentPlantListBinding>() {
     private fun changeBottomSheetState() {
         binding {
             val behavior = BottomSheetBehavior.from(fragmentPlantListBottomsheet)
-            behavior.state = if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                BottomSheetBehavior.STATE_HIDDEN
-            } else {
-                BottomSheetBehavior.STATE_EXPANDED
+            if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                behavior.state = BottomSheetBehavior.STATE_HIDDEN
+            } else if (behavior.state == BottomSheetBehavior.STATE_HIDDEN) {
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
         }
     }
