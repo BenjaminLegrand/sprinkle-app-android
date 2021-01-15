@@ -77,7 +77,7 @@ class PlantListAdapter @Inject constructor(
             }
         }
 
-        //Run code on main looper when all animations have ended
+        // Run code on main looper when all animations have ended
         Handler(Looper.getMainLooper()).postDelayed(
             {
                 val deletedItems = currentItems.filter { it.deleting }.map { it.getId() }
@@ -87,8 +87,6 @@ class PlantListAdapter @Inject constructor(
             },
             context.resources.getInteger(R.integer.plant_delete_anim_time).toLong()
         )
-
-
     }
 
     fun cancelDeletion() {

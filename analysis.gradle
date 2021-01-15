@@ -21,7 +21,7 @@ staticAnalysis {
         ignoreWarnings true
     }
     ktlint{
-        disabledRules = ["final-newline", "import-ordering"]
+        disabledRules = ["final-newline", "import-ordering", "max-line-length", "parameter-list-wrapping"]
         android.set(true)
         reporters {
             reporter "checkstyle"

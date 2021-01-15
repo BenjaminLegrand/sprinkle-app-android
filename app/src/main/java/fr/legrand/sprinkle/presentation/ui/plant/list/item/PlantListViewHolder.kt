@@ -6,7 +6,11 @@ import com.bumptech.glide.Glide
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
-import kotlinx.android.synthetic.main.view_plant_list_item.view.*
+import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_image
+import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_last_sprinkle_date
+import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_motion_layout
+import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_name
+import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_next_sprinkle_date
 import kotlin.time.ExperimentalTime
 
 private const val MAX_PROGRESS = 1f
@@ -24,22 +28,23 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             view_plant_list_item_next_sprinkle_date.text =
                 plant.getFormattedNextSprinkleDate(context)
 
-            view_plant_list_item_motion_layout.addOnAttachStateChangeListener(object :
-                View.OnAttachStateChangeListener {
-                override fun onViewAttachedToWindow(p0: View?) {
-                    /*When detached from Window, MotionLayout seems to reset its state -> when reattaching (every time we scroll,
-                    current view is reattached), we simply set the currentState*/
-                    setDeleteState(
-                        if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
-                        instantTransition = true
-                    )
-                }
+            view_plant_list_item_motion_layout.addOnAttachStateChangeListener(
+                object : View.OnAttachStateChangeListener {
+                    override fun onViewAttachedToWindow(p0: View?) {
+                        /*When detached from Window, MotionLayout seems to reset its state ->
+                        When reattaching (every time we scroll, current view is reattached),
+                        we simply set the currentState */
+                        setDeleteState(
+                            if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
+                            instantTransition = true
+                        )
+                    }
 
-                override fun onViewDetachedFromWindow(p0: View?) {
-                    //Nothing to do
+                    override fun onViewDetachedFromWindow(p0: View?) {
+                        // Nothing to do
+                    }
                 }
-
-            })
+            )
             setDeleteState(
                 if (plant.deleting) PlantItemDeleteState.DELETING else PlantItemDeleteState.IDLE,
                 instantTransition = true

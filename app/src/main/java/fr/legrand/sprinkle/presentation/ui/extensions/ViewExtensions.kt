@@ -49,7 +49,6 @@ fun MotionLayout.onTransitionEnd(onTransitionEnd: () -> Unit) {
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
                 // Nothing to do
             }
-
         }
     )
 }
