@@ -6,11 +6,7 @@ import com.bumptech.glide.Glide
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_image
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_last_sprinkle_date
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_motion_layout
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_name
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_next_sprinkle_date
+import kotlinx.android.synthetic.main.view_plant_list_item.view.*
 import kotlin.time.ExperimentalTime
 
 private const val MAX_PROGRESS = 1f
@@ -52,8 +48,13 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             Glide.with(context)
                 .load(plant.getImageUrl())
-                .error(R.drawable.ic_sunflower)
-                .into(view_plant_list_item_image)
+                .error(
+                    arrayOf(
+                        R.drawable.ic_sunflower,
+                        R.drawable.ic_plant_template_1,
+                        R.drawable.ic_plant_template_2,
+                    ).random()
+                ).into(view_plant_list_item_image)
 
             setOnClickDelayListener { onPlantClickListener(plant.getId()) }
         }

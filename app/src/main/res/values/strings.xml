@@ -24,5 +24,6 @@
     <string name="settings_title">Paramètres</string>
     <string name="settings_other_section_title">Autres</string>
     <string name="settings_version_label">Version</string>
+    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
 
 </resources>
