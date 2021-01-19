@@ -50,9 +50,27 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
                 .load(plant.getImageUrl())
                 .error(
                     arrayOf(
-                        R.drawable.ic_sunflower,
-                        R.drawable.ic_plant_template_1,
-                        R.drawable.ic_plant_template_2,
+                        R.drawable.ic_plant_template_01,
+                        R.drawable.ic_plant_template_02,
+                        R.drawable.ic_plant_template_03,
+                        R.drawable.ic_plant_template_04,
+                        R.drawable.ic_plant_template_05,
+                        R.drawable.ic_plant_template_06,
+                        R.drawable.ic_plant_template_07,
+                        R.drawable.ic_plant_template_08,
+                        R.drawable.ic_plant_template_09,
+                        R.drawable.ic_plant_template_10,
+                        R.drawable.ic_plant_template_11,
+                        R.drawable.ic_plant_template_12,
+                        R.drawable.ic_plant_template_13,
+                        R.drawable.ic_plant_template_14,
+                        R.drawable.ic_plant_template_15,
+                        R.drawable.ic_plant_template_16,
+                        R.drawable.ic_plant_template_17,
+                        R.drawable.ic_plant_template_18,
+                        R.drawable.ic_plant_template_19,
+                        R.drawable.ic_plant_template_20,
+                        R.drawable.ic_plant_template_21,
                     ).random()
                 ).into(view_plant_list_item_image)
 

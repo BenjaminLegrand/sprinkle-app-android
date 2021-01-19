@@ -42,6 +42,7 @@
             android:id="@+id/view_plant_list_item_image"
             android:layout_width="@dimen/plant_list_item_image_size"
             android:layout_height="@dimen/plant_list_item_image_size"
+            android:padding="@dimen/base_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
