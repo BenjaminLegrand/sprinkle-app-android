@@ -6,11 +6,7 @@ import com.bumptech.glide.Glide
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_image
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_last_sprinkle_date
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_motion_layout
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_name
-import kotlinx.android.synthetic.main.view_plant_list_item.view.view_plant_list_item_next_sprinkle_date
+import kotlinx.android.synthetic.main.view_plant_list_item.view.*
 import kotlin.time.ExperimentalTime
 
 private const val MAX_PROGRESS = 1f
@@ -52,8 +48,31 @@ class PlantListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             Glide.with(context)
                 .load(plant.getImageUrl())
-                .error(R.drawable.ic_sunflower)
-                .into(view_plant_list_item_image)
+                .error(
+                    arrayOf(
+                        R.drawable.ic_plant_template_01,
+                        R.drawable.ic_plant_template_02,
+                        R.drawable.ic_plant_template_03,
+                        R.drawable.ic_plant_template_04,
+                        R.drawable.ic_plant_template_05,
+                        R.drawable.ic_plant_template_06,
+                        R.drawable.ic_plant_template_07,
+                        R.drawable.ic_plant_template_08,
+                        R.drawable.ic_plant_template_09,
+                        R.drawable.ic_plant_template_10,
+                        R.drawable.ic_plant_template_11,
+                        R.drawable.ic_plant_template_12,
+                        R.drawable.ic_plant_template_13,
+                        R.drawable.ic_plant_template_14,
+                        R.drawable.ic_plant_template_15,
+                        R.drawable.ic_plant_template_16,
+                        R.drawable.ic_plant_template_17,
+                        R.drawable.ic_plant_template_18,
+                        R.drawable.ic_plant_template_19,
+                        R.drawable.ic_plant_template_20,
+                        R.drawable.ic_plant_template_21,
+                    ).random()
+                ).into(view_plant_list_item_image)
 
             setOnClickDelayListener { onPlantClickListener(plant.getId()) }
         }

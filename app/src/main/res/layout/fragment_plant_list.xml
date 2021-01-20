@@ -127,6 +127,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:visibility="visible">
 
+            <TextView
+                android:id="@+id/fragment_plant_list_delete_buttons_description"
+                style="@style/Widget.Sprinkle.TextView.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/fragment_plant_list_delete_buttons_description"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_cancel_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <Button
                 android:id="@+id/fragment_plant_list_delete_cancel_button"
                 style="@style/Widget.Sprinkle.Button"
@@ -136,7 +150,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_delete_confirm_button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_delete_buttons_description" />
 
             <Button
                 android:id="@+id/fragment_plant_list_delete_confirm_button"
@@ -147,7 +161,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_list_delete_cancel_button"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_list_delete_cancel_button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
