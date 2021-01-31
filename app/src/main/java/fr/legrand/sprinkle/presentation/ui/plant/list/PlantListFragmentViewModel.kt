@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import fr.legrand.sprinkle.data.repository.PlantRepository
 import fr.legrand.sprinkle.presentation.ui.base.BaseViewModel
 import fr.legrand.sprinkle.presentation.ui.wrapper.PlantViewDataWrapper
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.time.ExperimentalTime
 
@@ -19,11 +18,17 @@ class PlantListFragmentViewModel @ViewModelInject constructor(
 
     fun retrievePlantList() {
         launch {
-            plantRepository.retrievePlantList().collect {
-                plantListLiveData.postValue(it.map(::PlantViewDataWrapper))
-            }
+            val plantList = plantRepository.retrievePlantList()
+            plantListLiveData.postValue(plantList.map(::PlantViewDataWrapper))
+        }
+    }
+
+    fun deletePlants(ids: List<Int>) {
+        launch {
+            plantRepository.deletePlants(ids)
         }
     }
 
     fun getPlantListLiveData(): LiveData<List<PlantViewDataWrapper>> = plantListLiveData
+
 }

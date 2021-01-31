@@ -1,22 +1,27 @@
 package fr.legrand.sprinkle.data.business
 
-import fr.legrand.sprinkle.data.model.Exposition
 import fr.legrand.sprinkle.data.model.Plant
-import java.util.Date
 import javax.inject.Inject
-import kotlin.time.DurationUnit
+import javax.inject.Singleton
 import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
 
+//TODO put reusable when storage layer is done
 @ExperimentalTime
+@Singleton
 class PlantBusinessHelper @Inject constructor() {
 
+    //TODO add storage layer
+    private val plantList = mutableListOf<Plant>()
+
     fun retrievePlantList(): List<Plant> {
-        return listOf(
-            Plant(
-                1, "Name", "Species", "", "", Exposition.LOW_SUNLIGHT,
-                Date(), Date(), 1.toDuration(DurationUnit.DAYS), 1.toDuration(DurationUnit.DAYS)
-            )
-        )
+        return plantList
+    }
+
+    fun deletePlants(ids: List<Int>) {
+        plantList.removeAll { it.id in ids }
+    }
+
+    fun addPlant(plant: Plant) {
+        plantList.add(plant)
     }
 }
