@@ -6,9 +6,21 @@
         <item name="titleTextColor">?colorOnPrimary</item>
     </style>
 
+
     <style name="Widget.Sprinkle.OverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
         <item name="tint">?colorOnPrimary</item>
     </style>
+
+    <style name="Widget.Sprinkle.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.Sprinkle.Button.Error">
+        <item name="android:backgroundTint">?colorError</item>
+        <item name="android:textColor">?colorOnError</item>
+    </style>
+
 
     <style name="Widget.Sprinkle.TextView" parent="Widget.MaterialComponents.TextView" />
 
@@ -22,6 +34,14 @@
 
     <style name="TextAppearance.Sprinkle.Toolbar.Title" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textColor">?titleTextColor</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Settings.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">?colorPrimaryVariant</item>
+    </style>
+
+    <style name="TextAppearance.Sprinkle.Settings.Value" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">?textColorSecondaryDark</item>
     </style>
 
     <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">

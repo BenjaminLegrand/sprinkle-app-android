@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/fragment_plant_list_toolbar"
             android:layout_width="match_parent"
@@ -87,7 +86,7 @@
             android:id="@+id/fragment_plant_list_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_layout"
             app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_toolbar"
             tools:listitem="@layout/view_plant_list_item" />
 
@@ -103,13 +102,77 @@
             app:tint="?colorOnSecondary"
             tools:ignore="ContentDescription" />
 
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/fragment_plant_list_delete_buttons_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="fragment_plant_list_delete_shadow,fragment_plant_list_delete_buttons_layout"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/fragment_plant_list_delete_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/plant_list_delete_shadow_height"
+            android:background="@drawable/shadow_bottom_gradient"
+            app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_plant_list_delete_buttons_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorSurface"
+            android:padding="@dimen/base_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/fragment_plant_list_delete_buttons_description"
+                style="@style/Widget.Sprinkle.TextView.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/fragment_plant_list_delete_buttons_description"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Body1"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_cancel_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/fragment_plant_list_delete_cancel_button"
+                style="@style/Widget.Sprinkle.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/plant_list_cancel_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_list_delete_confirm_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_list_delete_buttons_description" />
+
+            <Button
+                android:id="@+id/fragment_plant_list_delete_confirm_button"
+                style="@style/Widget.Sprinkle.Button.Error"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/plant_list_delete_button_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_list_delete_cancel_button"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_list_delete_cancel_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/fragment_plant_list_bottom_sheet_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bottomsheet_background_color" />
+        android:background="@color/bottomsheet_background_color"
+        android:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_plant_list_bottomsheet"
@@ -120,7 +183,7 @@
         app:behavior_hideable="true"
         app:behavior_skipCollapsed="true"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/fragment_plant_list_actions_title"

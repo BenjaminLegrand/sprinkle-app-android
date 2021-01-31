@@ -9,5 +9,6 @@ class SplashscreenNavigator @Inject constructor() : SplashscreenActivityNavigato
 
     override fun displayMainActivity(activity: Activity) {
         activity.startActivity(Intent(activity, MainActivity::class.java))
+        activity.finish()
     }
 }

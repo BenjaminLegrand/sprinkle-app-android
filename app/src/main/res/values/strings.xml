@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Sprinkle</string>
 
+    <!--  Plant list  -->
     <string name="plant_list_title">Mes plantes</string>
     <string name="last_sprinkle_date_format">Arrosée le %s</string>
     <string name="last_sprinkle_date_unknown">Jamais arrosée</string>
@@ -12,8 +13,17 @@
     <string name="plant_list_actions_title">Actions</string>
     <string name="delete_plants_title">Supprimer des plantes</string>
     <string name="fertilize_title">Mettre de l\'engrais</string>
+    <string name="plant_list_cancel_button_text">Annuler</string>
+    <string name="plant_list_delete_button_text">Supprimer</string>
     <plurals name="next_sprinkle_date_format">
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>
     </plurals>
+
+    <!--  Settings  -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_other_section_title">Autres</string>
+    <string name="settings_version_label">Version</string>
+    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
+
 </resources>
