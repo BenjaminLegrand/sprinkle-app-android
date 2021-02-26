@@ -99,8 +99,8 @@
 
         <ImageView
             android:id="@+id/fragment_plant_create_exposition_shadow"
-            android:layout_width="@dimen/plante_creation_exposition_icon_size"
-            android:layout_height="@dimen/plante_creation_exposition_icon_size"
+            android:layout_width="@dimen/plant_creation_exposition_icon_size"
+            android:layout_height="@dimen/plant_creation_exposition_icon_size"
             android:layout_marginTop="@dimen/base_margin_double"
             android:src="@drawable/ic_exposition_shadow"
             app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_shadow_text"
@@ -123,8 +123,8 @@
 
         <ImageView
             android:id="@+id/fragment_plant_create_exposition_low_sunlight"
-            android:layout_width="@dimen/plante_creation_exposition_icon_size"
-            android:layout_height="@dimen/plante_creation_exposition_icon_size"
+            android:layout_width="@dimen/plant_creation_exposition_icon_size"
+            android:layout_height="@dimen/plant_creation_exposition_icon_size"
             android:layout_marginTop="@dimen/base_margin_double"
             android:src="@drawable/ic_expositon_low_sunlight"
             app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
@@ -148,8 +148,8 @@
 
         <ImageView
             android:id="@+id/fragment_plant_create_exposition_sunlight"
-            android:layout_width="@dimen/plante_creation_exposition_icon_size"
-            android:layout_height="@dimen/plante_creation_exposition_icon_size"
+            android:layout_width="@dimen/plant_creation_exposition_icon_size"
+            android:layout_height="@dimen/plant_creation_exposition_icon_size"
             android:layout_marginTop="@dimen/base_margin_double"
             android:src="@drawable/ic_exposition_sunlight"
             app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_sunlight_text"
@@ -184,8 +184,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fragment_plant_create_icon_list"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/base_margin_double"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/base_margin_double"
             android:nestedScrollingEnabled="false"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
