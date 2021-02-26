@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.ui.main.MainActivity" />
+        <activity android:name=".presentation.ui.plant.create.PlantCreateActivity" />
     </application>
 
 </manifest>

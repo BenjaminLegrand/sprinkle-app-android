@@ -6,9 +6,17 @@
     <fragment
         android:id="@+id/plantListFragment"
         android:name="fr.legrand.sprinkle.presentation.ui.plant.list.PlantListFragment"
-        android:label="PlantListFragment" />
+        android:label="PlantListFragment" >
+        <action
+            android:id="@+id/action_plantListFragment_to_plantCreateActivity"
+            app:destination="@id/plantCreateActivity" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="fr.legrand.sprinkle.presentation.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
+    <activity
+        android:id="@+id/plantCreateActivity"
+        android:name="fr.legrand.sprinkle.presentation.ui.plant.create.PlantCreateActivity"
+        android:label="PlantCreateActivity" />
 </navigation>

@@ -19,11 +19,21 @@
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>
     </plurals>
+    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
+
+    <!--  Plant creation  -->
+    <string name="plant_create_name">Nom</string>
+    <string name="plant_create_species">Espèce</string>
+    <string name="plant_create_location">Emplacement</string>
+    <string name="plant_create_exposition">Exposition</string>
+    <string name="fragment_plant_create_exposition_shadow">Ombre</string>
+    <string name="fragment_plant_create_exposition_sunlight">Luminosité forte</string>
+    <string name="fragment_plant_create_exposition_low_sunlight">Luminosité faible</string>
+    <string name="plant_icon">Icône</string>
 
     <!--  Settings  -->
     <string name="settings_title">Paramètres</string>
     <string name="settings_other_section_title">Autres</string>
     <string name="settings_version_label">Version</string>
-    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
 
 </resources>

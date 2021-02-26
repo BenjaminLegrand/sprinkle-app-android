@@ -21,4 +21,8 @@ class PlantRepository @Inject constructor(
     suspend fun deletePlants(ids: List<Int>): Unit = withContext(coroutineContext) {
         plantBusinessHelper.deletePlants(ids)
     }
+
+    suspend fun createPlant(plant : Plant) : Unit = withContext(coroutineContext){
+        plantBusinessHelper.addPlant(plant)
+    }
 }

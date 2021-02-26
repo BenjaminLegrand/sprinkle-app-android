@@ -9,7 +9,7 @@ data class Plant constructor(
     val id: Int,
     val name: String,
     val species: String,
-    val imageUrl: String,
+    val templateIcon: TemplateIcon,
     val location: String,
     val exposition: Exposition,
     val lastSprinkleDate: Date?,
