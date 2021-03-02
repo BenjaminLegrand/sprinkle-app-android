@@ -25,6 +25,18 @@
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
 
+    <style name="Widget.Sprinkle.Button.Borderless" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+
+    <style name="Widget.Sprinkle.Button.Secondary">
+        <item name="android:backgroundTint">?colorSecondary</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+    </style>
+
     <style name="Widget.Sprinkle.Button.Error">
         <item name="android:backgroundTint">?colorError</item>
         <item name="android:textColor">?colorOnError</item>

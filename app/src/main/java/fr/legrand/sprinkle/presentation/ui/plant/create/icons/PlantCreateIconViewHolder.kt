@@ -13,7 +13,7 @@ class PlantCreateIconViewHolder constructor(view: View) : RecyclerView.ViewHolde
             view_plant_create_icon_list_item_image.setImageResource(iconRes)
             view_plant_create_icon_list_item_image.isSelected = selected
 
-            setOnClickDelayListener {
+            view_plant_create_icon_list_item_image.setOnClickDelayListener {
                 onIconClick(adapterPosition, !view_plant_create_icon_list_item_image.isSelected)
             }
         }

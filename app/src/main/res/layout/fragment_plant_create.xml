@@ -1,198 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?colorPrimary">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/fragment_plant_create_form_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_button"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/fragment_plant_create_start_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/base_margin_double" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/fragment_plant_create_end_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/base_margin_double" />
+            <ImageView
+                android:id="@+id/fragment_plant_create_header_icon"
+                android:layout_width="@dimen/fragment_plant_create_header_icon_size"
+                android:layout_height="@dimen/fragment_plant_create_header_icon_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:src="@drawable/ic_plant_create_header"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_form_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_plant_create_name_layout"
-            style="@style/Widget.Sprinkle.TextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:hint="@string/plant_create_name"
-            android:labelFor="@id/fragment_plant_create_name"
-            android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
-            app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_species_layout"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/fragment_plant_create_form_title"
+                style="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginBottom="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/fragment_plant_create_form_title"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_name_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_header_icon" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fragment_plant_create_name"
-                style="@style/Widget.Sprinkle.TextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_plant_create_name_layout"
+                style="@style/Widget.Sprinkle.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:hint="@string/plant_create_name"
+                android:labelFor="@id/fragment_plant_create_name"
+                android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_species_layout"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_plant_create_species_layout"
-            style="@style/Widget.Sprinkle.TextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:hint="@string/plant_create_species"
-            android:labelFor="@id/fragment_plant_create_species"
-            android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
-            app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_location_layout"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_name_layout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_plant_create_name"
+                    style="@style/Widget.Sprinkle.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fragment_plant_create_species"
-                style="@style/Widget.Sprinkle.TextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_plant_create_species_layout"
+                style="@style/Widget.Sprinkle.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:hint="@string/plant_create_species"
+                android:labelFor="@id/fragment_plant_create_species"
+                android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_location_layout"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_name_layout">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_plant_create_location_layout"
-            style="@style/Widget.Sprinkle.TextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:hint="@string/plant_create_location"
-            android:labelFor="@id/fragment_plant_create_location"
-            android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_species_layout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_plant_create_species"
+                    style="@style/Widget.Sprinkle.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fragment_plant_create_location"
-                style="@style/Widget.Sprinkle.TextInputEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_plant_create_location_layout"
+                style="@style/Widget.Sprinkle.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:hint="@string/plant_create_location"
+                android:labelFor="@id/fragment_plant_create_location"
+                android:theme="@style/Theme.Sprinkle.TextInputLayout.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_sprinkling_title"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_species_layout">
 
-        <TextView
-            android:id="@+id/fragment_plant_create_exposition_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:text="@string/plant_create_exposition"
-            android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_location_layout" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_plant_create_location"
+                    style="@style/Widget.Sprinkle.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
-            android:id="@+id/fragment_plant_create_exposition_shadow"
-            android:layout_width="@dimen/plant_creation_exposition_icon_size"
-            android:layout_height="@dimen/plant_creation_exposition_icon_size"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:src="@drawable/ic_exposition_shadow"
-            app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_shadow_text"
-            app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_shadow_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title"
-            app:tint="?colorOnPrimary" />
+            <TextView
+                android:id="@+id/fragment_plant_create_sprinkling_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/plant_create_sprinkling_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_location_layout" />
 
-        <TextView
-            android:id="@+id/fragment_plant_create_exposition_shadow_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_half"
-            android:layout_marginEnd="@dimen/base_margin"
-            android:gravity="center"
-            android:text="@string/fragment_plant_create_exposition_shadow"
-            android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_exposition_low_sunlight_text"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_shadow" />
+            <Button
+                android:id="@+id/fragment_plant_create_sprinkling_less"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/fragment_plant_create_less_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_fertilize_title"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_sprinkling_value"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_sprinkling_title" />
 
-        <ImageView
-            android:id="@+id/fragment_plant_create_exposition_low_sunlight"
-            android:layout_width="@dimen/plant_creation_exposition_icon_size"
-            android:layout_height="@dimen/plant_creation_exposition_icon_size"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:src="@drawable/ic_expositon_low_sunlight"
-            app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
-            app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_low_sunlight_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title"
-            app:tint="?colorOnPrimary" />
+            <TextView
+                android:id="@+id/fragment_plant_create_sprinkling_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/base_margin_double"
+                android:gravity="center"
+                android:lines="2"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_sprinkling_more"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_sprinkling_less"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_sprinkling_less"
+                app:layout_constraintWidth_percent="0.6"
+                tools:text="5 semaines" />
 
-        <TextView
-            android:id="@+id/fragment_plant_create_exposition_low_sunlight_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/base_margin"
-            android:layout_marginTop="@dimen/base_margin_half"
-            android:layout_marginEnd="@dimen/base_margin"
-            android:gravity="center"
-            android:text="@string/fragment_plant_create_exposition_low_sunlight"
-            android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_exposition_sunlight_text"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_exposition_shadow_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_low_sunlight" />
+            <Button
+                android:id="@+id/fragment_plant_create_sprinkling_more"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:text="@string/fragment_plant_create_more_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_sprinkling_value"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_sprinkling_less" />
 
-        <ImageView
-            android:id="@+id/fragment_plant_create_exposition_sunlight"
-            android:layout_width="@dimen/plant_creation_exposition_icon_size"
-            android:layout_height="@dimen/plant_creation_exposition_icon_size"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:src="@drawable/ic_exposition_sunlight"
-            app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_sunlight_text"
-            app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_sunlight_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title"
-            app:tint="?colorOnPrimary" />
+            <TextView
+                android:id="@+id/fragment_plant_create_fertilize_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/plant_create_fertilize_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_sprinkling_less" />
 
-        <TextView
-            android:id="@+id/fragment_plant_create_exposition_sunlight_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/base_margin"
-            android:layout_marginTop="@dimen/base_margin_half"
-            android:gravity="center"
-            android:text="@string/fragment_plant_create_exposition_sunlight"
-            android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_sunlight" />
+            <Button
+                android:id="@+id/fragment_plant_create_fertilize_less"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/fragment_plant_create_less_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_title"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_fertilize_value"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_fertilize_title" />
 
-        <TextView
-            android:id="@+id/fragment_plant_create_icon_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base_margin_double"
-            android:text="@string/plant_icon"
-            android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_shadow_text" />
+            <TextView
+                android:id="@+id/fragment_plant_create_fertilize_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/base_margin_double"
+                android:gravity="center"
+                android:lines="2"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_fertilize_more"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_fertilize_less"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_fertilize_less"
+                app:layout_constraintWidth_percent="0.6"
+                tools:text="1 mois" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_plant_create_icon_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/base_margin_double"
-            android:nestedScrollingEnabled="false"
-            android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
-            app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-            app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_icon_title"
-            tools:listitem="@layout/view_plant_create_icon_list_item" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/fragment_plant_create_fertilize_more"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:text="@string/fragment_plant_create_more_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_fertilize_value"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_fertilize_less" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_exposition_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/plant_create_exposition_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_fertilize_less" />
+
+            <ImageView
+                android:id="@+id/fragment_plant_create_exposition_shadow"
+                android:layout_width="@dimen/plant_creation_exposition_icon_size"
+                android:layout_height="@dimen/plant_creation_exposition_icon_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:background="@drawable/plant_create_icon_background"
+                android:padding="@dimen/fragment_plant_create_exposition_shadow_padding"
+                android:src="@drawable/ic_exposition_shadow"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_top"
+                app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_shadow_text"
+                app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_shadow_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_exposition_shadow_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_half"
+                android:layout_marginEnd="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/fragment_plant_create_exposition_shadow"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_bottom"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_exposition_low_sunlight_text"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_shadow" />
+
+            <ImageView
+                android:id="@+id/fragment_plant_create_exposition_low_sunlight"
+                android:layout_width="@dimen/plant_creation_exposition_icon_size"
+                android:layout_height="@dimen/plant_creation_exposition_icon_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:background="@drawable/plant_create_icon_background"
+                android:padding="@dimen/plant_creation_exposition_icon_padding"
+                android:src="@drawable/ic_expositon_low_sunlight"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_top"
+
+                app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
+                app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_low_sunlight_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_exposition_low_sunlight_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin_half"
+                android:layout_marginEnd="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/fragment_plant_create_exposition_low_sunlight"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_bottom"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_exposition_sunlight_text"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_exposition_shadow_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_low_sunlight" />
+
+            <ImageView
+                android:id="@+id/fragment_plant_create_exposition_sunlight"
+                android:layout_width="@dimen/plant_creation_exposition_icon_size"
+                android:layout_height="@dimen/plant_creation_exposition_icon_size"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:background="@drawable/plant_create_icon_background"
+                android:padding="@dimen/fragment_plant_create_exposition_sunlight_padding"
+                android:src="@drawable/ic_exposition_sunlight"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_top"
+                app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_sunlight_text"
+                app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_sunlight_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_exposition_sunlight_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_margin_half"
+                android:gravity="center"
+                android:text="@string/fragment_plant_create_exposition_sunlight"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_bottom"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_sunlight" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_plant_create_exposition_text_barrier_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="fragment_plant_create_exposition_shadow_text,fragment_plant_create_exposition_low_sunlight_text,fragment_plant_create_exposition_sunlight_text" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_plant_create_exposition_text_barrier_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:constraint_referenced_ids="fragment_plant_create_exposition_shadow_text,fragment_plant_create_exposition_low_sunlight_text,fragment_plant_create_exposition_sunlight_text" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_icon_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_double"
+                android:text="@string/plant_create_icon_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_text_barrier_bottom" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_plant_create_icon_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_icon_title"
+                tools:listitem="@layout/view_plant_create_icon_list_item" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/fragment_plant_create_start_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/base_margin_double" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/fragment_plant_create_end_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/base_margin_double" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/fragment_plant_create_bottom_area"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?colorSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_form_layout" />
+
+    <View
+        android:id="@+id/fragment_plant_create_button_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_shadow_height"
+        android:background="@drawable/shadow_bottom_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_form_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/fragment_plant_cancel_button"
+        style="@style/Widget.Sprinkle.Button.Error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/base_margin"
+        android:text="@string/fragment_plant_cancel_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_form_layout" />
+
+    <Button
+        android:id="@+id/fragment_plant_create_button"
+        style="@style/Widget.Sprinkle.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/base_margin"
+        android:enabled="false"
+        android:text="@string/fragment_plant_create_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fragment_plant_cancel_button"
+        app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_form_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

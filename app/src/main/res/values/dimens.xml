@@ -10,6 +10,7 @@
     <dimen name="base_margin_double">16dp</dimen>
     <dimen name="toolbar_icon_size">36dp</dimen>
     <dimen name="toolbar_icon_padding">6dp</dimen>
+    <dimen name="default_shadow_height">6dp</dimen>
 
     <!--  Plant List -->
     <dimen name="plant_list_item_image_size">72dp</dimen>
@@ -24,14 +25,19 @@
     <dimen name="settings_content_horizontal_margin">8dp</dimen>
 
     <!--  Plant Deletion  -->
-    <dimen name="plant_list_delete_shadow_height">4dp</dimen>
     <dimen name="plant_item_delete_state_start_margin">64dp</dimen>
     <dimen name="view_plant_list_item_delete_indicator_background_width">76dp</dimen>
 
     <!--  Plant creation  -->
-    <dimen name="plant_creation_exposition_icon_size">42dp</dimen>
-    <dimen name="plant_create_icon_list_item_size">64dp</dimen>
+    <dimen name="plant_creation_exposition_icon_size">56dp</dimen>
+    <dimen name="plant_create_icon_list_item_size">56dp</dimen>
     <dimen name="plant_create_icon_list_item_padding">8dp</dimen>
     <dimen name="plant_create_icon_radius">8dp</dimen>
     <dimen name="plant_create_icon_elevation">4dp</dimen>
+    <dimen name="fragment_plant_create_exposition_shadow_padding">10dp</dimen>
+    <dimen name="fragment_plant_create_exposition_sunlight_padding">10dp</dimen>
+    <dimen name="fragment_plant_create_header_icon_size">90dp</dimen>
+    <dimen name="plant_creation_exposition_icon_padding">4dp</dimen>
+    <dimen name="min_clickable_size">48dp</dimen>
+    <dimen name="plant_create_more_less_button_text_size">20sp</dimen>
 </resources>
