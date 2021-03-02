@@ -62,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:lines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,6 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:lines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
+                    android:inputType="text"
                     android:lines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,8 +152,8 @@
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_sprinkling_more"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_sprinkling_less"
                 app:layout_constraintTop_toTopOf="@id/fragment_plant_create_sprinkling_less"
-                app:layout_constraintWidth_percent="0.6"
-                tools:text="5 semaines" />
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="5 semaines et 2 jours" />
 
             <Button
                 android:id="@+id/fragment_plant_create_sprinkling_more"
@@ -202,8 +205,8 @@
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_fertilize_more"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_fertilize_less"
                 app:layout_constraintTop_toTopOf="@id/fragment_plant_create_fertilize_less"
-                app:layout_constraintWidth_percent="0.6"
-                tools:text="1 mois" />
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="1 mois et 4 semaines" />
 
             <Button
                 android:id="@+id/fragment_plant_create_fertilize_more"
@@ -233,6 +236,7 @@
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
                 android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/fragment_plant_create_exposition_shadow_padding"
                 android:src="@drawable/ic_exposition_shadow"
@@ -245,7 +249,6 @@
                 android:id="@+id/fragment_plant_create_exposition_shadow_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin_half"
                 android:layout_marginEnd="@dimen/base_margin"
                 android:gravity="center"
                 android:text="@string/fragment_plant_create_exposition_shadow"
@@ -260,11 +263,11 @@
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
                 android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/plant_creation_exposition_icon_padding"
                 android:src="@drawable/ic_expositon_low_sunlight"
                 app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_text_barrier_top"
-
                 app:layout_constraintEnd_toEndOf="@id/fragment_plant_create_exposition_low_sunlight_text"
                 app:layout_constraintStart_toStartOf="@id/fragment_plant_create_exposition_low_sunlight_text"
                 app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_exposition_title" />
@@ -274,7 +277,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/base_margin"
-                android:layout_marginTop="@dimen/base_margin_half"
                 android:layout_marginEnd="@dimen/base_margin"
                 android:gravity="center"
                 android:text="@string/fragment_plant_create_exposition_low_sunlight"
@@ -289,6 +291,7 @@
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
                 android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/fragment_plant_create_exposition_sunlight_padding"
                 android:src="@drawable/ic_exposition_sunlight"
@@ -302,7 +305,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/base_margin"
-                android:layout_marginTop="@dimen/base_margin_half"
                 android:gravity="center"
                 android:text="@string/fragment_plant_create_exposition_sunlight"
                 android:textAppearance="@style/TextAppearance.Sprinkle.Body2.Light"
