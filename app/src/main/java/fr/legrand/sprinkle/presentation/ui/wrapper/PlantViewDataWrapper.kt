@@ -5,7 +5,8 @@ import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.data.model.Plant
 import fr.legrand.sprinkle.data.model.TemplateIcon
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration

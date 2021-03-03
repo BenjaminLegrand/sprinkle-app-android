@@ -12,10 +12,14 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantListBinding
-import fr.legrand.sprinkle.presentation.ui.extensions.*
+import fr.legrand.sprinkle.presentation.ui.extensions.hide
+import fr.legrand.sprinkle.presentation.ui.extensions.observeSafe
+import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
+import fr.legrand.sprinkle.presentation.ui.extensions.setVisible
+import fr.legrand.sprinkle.presentation.ui.extensions.show
 import fr.legrand.sprinkle.presentation.ui.plant.list.item.PlantListAdapter
 import fr.legrand.viewbinding.extensions.BindingFragment
-import kotlinx.android.synthetic.main.fragment_plant_list.*
+import kotlinx.android.synthetic.main.fragment_plant_list.fragment_plant_list_create_fab
 import javax.inject.Inject
 import kotlin.time.ExperimentalTime
 
