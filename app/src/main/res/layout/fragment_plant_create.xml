@@ -132,22 +132,35 @@
                 android:layout_height="@dimen/base_separator_height"
                 android:layout_marginTop="@dimen/base_margin"
                 android:background="?separatorColor"
-                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_sprinkling_less"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_sprinkling_title"
                 app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_sprinkling_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_winter_sprinkling_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/plant_create_sprinkling_winter_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_sprinkling_separator" />
 
             <Button
                 android:id="@+id/fragment_plant_create_winter_sprinkling_less"
                 style="@style/Widget.Sprinkle.Button.Borderless"
                 android:layout_width="@dimen/min_clickable_size"
                 android:layout_height="@dimen/min_clickable_size"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:text="@string/fragment_plant_create_less_button_text"
                 android:textSize="@dimen/plant_create_more_less_button_text_size"
-                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_fertilize_title"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_summer_sprinkling_title"
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_winter_sprinkling_interval"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_sprinkling_title" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_sprinkling_title" />
 
             <TextView
                 android:id="@+id/fragment_plant_create_winter_sprinkling_interval"
@@ -177,6 +190,60 @@
                 app:layout_constraintTop_toTopOf="@id/fragment_plant_create_winter_sprinkling_less" />
 
             <TextView
+                android:id="@+id/fragment_plant_create_summer_sprinkling_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/plant_create_sprinkling_summer_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_summer_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_sprinkling_less" />
+
+            <Button
+                android:id="@+id/fragment_plant_create_summer_sprinkling_less"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:layout_marginTop="@dimen/base_margin"
+                android:text="@string/fragment_plant_create_less_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_fertilize_title"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_summer_sprinkling_interval"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_summer_sprinkling_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_summer_sprinkling_interval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/base_margin_double"
+                android:gravity="center"
+                android:lines="2"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_summer_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_summer_sprinkling_more"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_summer_sprinkling_less"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_summer_sprinkling_less"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="5 semaines et 2 jours" />
+
+            <Button
+                android:id="@+id/fragment_plant_create_summer_sprinkling_more"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:text="@string/fragment_plant_create_more_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_summer_sprinkling_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_summer_sprinkling_interval"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_summer_sprinkling_less" />
+
+            <TextView
                 android:id="@+id/fragment_plant_create_fertilize_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -186,7 +253,7 @@
                 app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_fertilize_separator"
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_sprinkling_less" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_summer_sprinkling_less" />
 
             <View
                 android:id="@+id/fragment_plant_create_fertilize_separator"
@@ -194,22 +261,35 @@
                 android:layout_height="@dimen/base_separator_height"
                 android:layout_marginTop="@dimen/base_margin"
                 android:background="?separatorColor"
-                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_fertilize_less"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_fertilize_title"
                 app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_fertilize_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_winter_fertilize_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/plant_create_fertilize_winter_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_winter_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_fertilize_separator" />
 
             <Button
                 android:id="@+id/fragment_plant_create_winter_fertilize_less"
                 style="@style/Widget.Sprinkle.Button.Borderless"
                 android:layout_width="@dimen/min_clickable_size"
                 android:layout_height="@dimen/min_clickable_size"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:text="@string/fragment_plant_create_less_button_text"
                 android:textSize="@dimen/plant_create_more_less_button_text_size"
-                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_title"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_summer_fertilize_title"
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_winter_fertilize_interval"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_fertilize_title" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_fertilize_title" />
 
             <TextView
                 android:id="@+id/fragment_plant_create_winter_fertilize_interval"
@@ -239,6 +319,60 @@
                 app:layout_constraintTop_toTopOf="@id/fragment_plant_create_winter_fertilize_less" />
 
             <TextView
+                android:id="@+id/fragment_plant_create_summer_fertilize_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin"
+                android:gravity="center"
+                android:text="@string/plant_create_fertilize_summer_title"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_summer_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_fertilize_less" />
+
+            <Button
+                android:id="@+id/fragment_plant_create_summer_fertilize_less"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:layout_marginTop="@dimen/base_margin"
+                android:text="@string/fragment_plant_create_less_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_title"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_summer_fertilize_interval"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_summer_fertilize_title" />
+
+            <TextView
+                android:id="@+id/fragment_plant_create_summer_fertilize_interval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/base_margin_double"
+                android:gravity="center"
+                android:lines="2"
+                android:textAppearance="@style/TextAppearance.Sprinkle.Subtitle.Light"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_summer_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_summer_fertilize_more"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_summer_fertilize_less"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_summer_fertilize_less"
+                app:layout_constraintWidth_percent="0.5"
+                tools:text="5 semaines et 2 jours" />
+
+            <Button
+                android:id="@+id/fragment_plant_create_summer_fertilize_more"
+                style="@style/Widget.Sprinkle.Button.Borderless"
+                android:layout_width="@dimen/min_clickable_size"
+                android:layout_height="@dimen/min_clickable_size"
+                android:text="@string/fragment_plant_create_more_button_text"
+                android:textSize="@dimen/plant_create_more_less_button_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/fragment_plant_create_summer_fertilize_less"
+                app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
+                app:layout_constraintStart_toEndOf="@id/fragment_plant_create_summer_fertilize_interval"
+                app:layout_constraintTop_toTopOf="@id/fragment_plant_create_summer_fertilize_less" />
+
+            <TextView
                 android:id="@+id/fragment_plant_create_exposition_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -248,7 +382,7 @@
                 app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_exposition_separator"
                 app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_end_guideline"
                 app:layout_constraintStart_toEndOf="@id/fragment_plant_create_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_winter_fertilize_less" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_summer_fertilize_less" />
 
             <View
                 android:id="@+id/fragment_plant_create_exposition_separator"
@@ -262,7 +396,7 @@
                 android:id="@+id/fragment_plant_create_exposition_shadow"
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/fragment_plant_create_exposition_shadow_padding"
@@ -289,7 +423,7 @@
                 android:id="@+id/fragment_plant_create_exposition_low_sunlight"
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/plant_creation_exposition_icon_padding"
@@ -317,7 +451,7 @@
                 android:id="@+id/fragment_plant_create_exposition_sunlight"
                 android:layout_width="@dimen/plant_creation_exposition_icon_size"
                 android:layout_height="@dimen/plant_creation_exposition_icon_size"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:layout_marginBottom="@dimen/base_margin"
                 android:background="@drawable/plant_create_icon_background"
                 android:padding="@dimen/fragment_plant_create_exposition_sunlight_padding"
@@ -379,7 +513,7 @@
                 android:id="@+id/fragment_plant_create_icon_list"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin_double"
+                android:layout_marginTop="@dimen/base_margin"
                 android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 app:layout_constraintBottom_toBottomOf="parent"

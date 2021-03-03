@@ -75,8 +75,10 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setupIconList()
         setupExposition()
-        setupSprinkling()
-        setupFertilize()
+        setupWinterSprinkling()
+        setupSummerSprinkling()
+        setupWinterFertilize()
+        setupSummerFertilize()
         setupButtons()
     }
 
@@ -101,49 +103,82 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
         }
     }
 
-    private fun setupFertilize() {
+    private fun setupWinterFertilize() {
         binding {
-            listOf(
-                fragmentPlantCreateWinterFertilizeInterval to currentWinterFertilizeInterval,
-                fragmentPlantCreateSummerFertilizeInterval to currentSummerFertilizeInterval
-            ).forEach{
-                it.first.text =
-                    getFertilizeIntervalText(it.second)
+            fragmentPlantCreateWinterFertilizeInterval.text =
+                getFertilizeIntervalText(currentWinterFertilizeInterval)
 
-                fragmentPlantCreateFertilizeLess.setOnClickListener {
-                    currentFertilizeInterval = max(currentFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
-                    fragmentPlantCreateFertilizeValue.text =
-                        getFertilizeIntervalText(currentFertilizeInterval)
+            fragmentPlantCreateWinterFertilizeLess.setOnClickListener {
+                currentWinterFertilizeInterval = max(currentWinterFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
+                fragmentPlantCreateWinterFertilizeInterval.text =
+                    getFertilizeIntervalText(currentWinterFertilizeInterval)
 
-                }
-                fragmentPlantCreateFertilizeMore.setOnClickListener {
-                    currentFertilizeInterval++
-                    fragmentPlantCreateFertilizeValue.text =
-                        getFertilizeIntervalText(currentFertilizeInterval)
-                }
             }
-
+            fragmentPlantCreateWinterFertilizeMore.setOnClickListener {
+                currentWinterFertilizeInterval++
+                fragmentPlantCreateWinterFertilizeInterval.text =
+                    getFertilizeIntervalText(currentWinterFertilizeInterval)
+            }
         }
     }
 
-    private fun setupSprinkling() {
+    private fun setupSummerFertilize() {
         binding {
-            fragmentPlantCreateSprinklingValue.text =
-                getSprinklingIntervalText(currentSprinklingInterval)
+            fragmentPlantCreateSummerFertilizeInterval.text =
+                getFertilizeIntervalText(currentSummerFertilizeInterval)
 
-            fragmentPlantCreateSprinklingLess.setOnClickListener {
-                currentSprinklingInterval = max(currentSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
-                fragmentPlantCreateSprinklingValue.text =
-                    getSprinklingIntervalText(currentSprinklingInterval)
+            fragmentPlantCreateSummerFertilizeLess.setOnClickListener {
+                currentSummerFertilizeInterval = max(currentSummerFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
+                fragmentPlantCreateSummerFertilizeInterval.text =
+                    getFertilizeIntervalText(currentSummerFertilizeInterval)
 
             }
-            fragmentPlantCreateSprinklingMore.setOnClickListener {
-                currentSprinklingInterval++
-                fragmentPlantCreateSprinklingValue.text =
-                    getSprinklingIntervalText(currentSprinklingInterval)
+            fragmentPlantCreateSummerFertilizeMore.setOnClickListener {
+                currentSummerFertilizeInterval++
+                fragmentPlantCreateSummerFertilizeInterval.text =
+                    getFertilizeIntervalText(currentSummerFertilizeInterval)
             }
         }
     }
+
+    private fun setupWinterSprinkling() {
+        binding {
+            fragmentPlantCreateWinterSprinklingInterval.text =
+                getSprinklingIntervalText(currentWinterSprinklingInterval)
+
+            fragmentPlantCreateWinterSprinklingLess.setOnClickListener {
+                currentWinterSprinklingInterval = max(currentWinterSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
+                fragmentPlantCreateWinterSprinklingInterval.text =
+                    getSprinklingIntervalText(currentWinterSprinklingInterval)
+
+            }
+            fragmentPlantCreateWinterSprinklingMore.setOnClickListener {
+                currentWinterSprinklingInterval++
+                fragmentPlantCreateWinterSprinklingInterval.text =
+                    getSprinklingIntervalText(currentWinterSprinklingInterval)
+            }
+        }
+    }
+
+    private fun setupSummerSprinkling() {
+        binding {
+            fragmentPlantCreateSummerSprinklingInterval.text =
+                getSprinklingIntervalText(currentSummerSprinklingInterval)
+
+            fragmentPlantCreateSummerSprinklingLess.setOnClickListener {
+                currentSummerSprinklingInterval = max(currentSummerSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
+                fragmentPlantCreateSummerSprinklingInterval.text =
+                    getSprinklingIntervalText(currentSummerSprinklingInterval)
+
+            }
+            fragmentPlantCreateSummerSprinklingMore.setOnClickListener {
+                currentSummerSprinklingInterval++
+                fragmentPlantCreateSummerSprinklingInterval.text =
+                    getSprinklingIntervalText(currentSummerSprinklingInterval)
+            }
+        }
+    }
+
 
     private fun getSprinklingIntervalText(value: Int): String {
         val weekCount = value / DAYS_IN_WEEK

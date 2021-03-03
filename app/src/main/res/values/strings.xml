@@ -61,5 +61,9 @@
     <string name="settings_title">Paramètres</string>
     <string name="settings_other_section_title">Autres</string>
     <string name="settings_version_label">Version</string>
+    <string name="plant_create_sprinkling_winter_title">Hiver</string>
+    <string name="plant_create_sprinkling_summer_title">Été</string>
+    <string name="plant_create_fertilize_summer_title">Été</string>
+    <string name="plant_create_fertilize_winter_title">Hiver</string>
 
 </resources>
