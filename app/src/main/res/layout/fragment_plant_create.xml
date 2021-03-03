@@ -10,7 +10,7 @@
         android:id="@+id/fragment_plant_create_form_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_button"
+        app:layout_constraintBottom_toTopOf="@id/fragment_plant_create_submit_button"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -386,28 +386,28 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/fragment_plant_cancel_button"
+        android:id="@+id/fragment_plant_create_cancel_button"
         style="@style/Widget.Sprinkle.Button.Error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/base_margin"
-        android:text="@string/fragment_plant_cancel_button_text"
+        android:text="@string/fragment_plant_create_cancel_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_button"
+        app:layout_constraintEnd_toStartOf="@id/fragment_plant_create_submit_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_form_layout" />
 
     <Button
-        android:id="@+id/fragment_plant_create_button"
+        android:id="@+id/fragment_plant_create_submit_button"
         style="@style/Widget.Sprinkle.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/base_margin"
         android:enabled="false"
-        android:text="@string/fragment_plant_create_button_text"
+        android:text="@string/fragment_plant_create_submit_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/fragment_plant_cancel_button"
+        app:layout_constraintStart_toEndOf="@id/fragment_plant_create_cancel_button"
         app:layout_constraintTop_toBottomOf="@id/fragment_plant_create_form_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

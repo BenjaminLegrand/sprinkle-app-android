@@ -8,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
 import fr.legrand.sprinkle.databinding.FragmentPlantCreateBinding
 import fr.legrand.sprinkle.presentation.ui.plant.create.icons.PlantCreateIconListAdapter
+import fr.legrand.sprinkle.presentation.ui.plant.create.navigator.PlantCreateFragmentNavigatorListener
 import fr.legrand.viewbinding.extensions.BindingFragment
 import javax.inject.Inject
 import kotlin.math.max
@@ -23,9 +24,11 @@ private const val WEEKS_IN_MONTH = 4
 @AndroidEntryPoint
 class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
 
-
     @Inject
     lateinit var plantCreateIconListAdapter: PlantCreateIconListAdapter
+
+    @Inject
+    lateinit var navigatorListener: PlantCreateFragmentNavigatorListener
 
     private val viewModel: PlantCreateFragmentViewModel by viewModels()
 
@@ -42,6 +45,15 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
         setupExposition()
         setupSprinkling()
         setupFertilize()
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        binding {
+            fragmentPlantCreateCancelButton.setOnClickListener {
+                navigatorListener.onCancelClick(requireActivity())
+            }
+        }
     }
 
     private fun setupFertilize() {
@@ -50,7 +62,7 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 getFertilizeIntervalText(currentFertilizeValue)
 
             fragmentPlantCreateFertilizeLess.setOnClickListener {
-                currentFertilizeValue = max(currentFertilizeValue - 1, DEFAULT_SPRINKLING_VALUE)
+                currentFertilizeValue = max(currentFertilizeValue - 1, DEFAULT_FERTILIZE_VALUE)
                 fragmentPlantCreateFertilizeValue.text =
                     getFertilizeIntervalText(currentFertilizeValue)
 
@@ -69,7 +81,7 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 getSprinklingIntervalText(currentSprinklingValue)
 
             fragmentPlantCreateSprinklingLess.setOnClickListener {
-                currentSprinklingValue = max(currentSprinklingValue - 1, DEFAULT_FERTILIZE_VALUE)
+                currentSprinklingValue = max(currentSprinklingValue - 1, DEFAULT_SPRINKLING_VALUE)
                 fragmentPlantCreateSprinklingValue.text =
                     getSprinklingIntervalText(currentSprinklingValue)
 

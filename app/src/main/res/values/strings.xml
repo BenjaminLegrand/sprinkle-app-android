@@ -30,9 +30,9 @@
     <string name="fragment_plant_create_exposition_sunlight">Luminosité\nforte</string>
     <string name="fragment_plant_create_exposition_low_sunlight">Luminosité\nfaible</string>
     <string name="plant_create_icon_title">Icône</string>
-    <string name="fragment_plant_create_button_text">Créer</string>
+    <string name="fragment_plant_create_submit_button_text">Créer</string>
     <string name="fragment_plant_create_form_title">Créez votre plante en remplissant ses informations !</string>
-    <string name="fragment_plant_cancel_button_text">Annuler</string>
+    <string name="fragment_plant_create_cancel_button_text">Annuler</string>
     <string name="plant_create_sprinkling_title">Délai d\'arrosage</string>
     <string name="fragment_plant_create_more_button_text">+</string>
     <string name="fragment_plant_create_less_button_text">-</string>
