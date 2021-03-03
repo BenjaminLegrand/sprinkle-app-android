@@ -54,7 +54,6 @@ data class PlantViewDataWrapper(private val plant: Plant) {
             }
         } ?: context.getString(R.string.next_sprinkle_date_unknown)
 
-
     fun getTemplateIconResource(): Int = when (plant.templateIcon) {
         TemplateIcon.TEMPLATE_1 -> R.drawable.ic_plant_template_01
         TemplateIcon.TEMPLATE_2 -> R.drawable.ic_plant_template_02
