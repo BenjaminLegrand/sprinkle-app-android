@@ -21,24 +21,24 @@
     </style>
 
     <style name="Widget.Sprinkle.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="backgroundTint">@color/primary_button_background_tint</item>
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
 
     <style name="Widget.Sprinkle.Button.Borderless" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:backgroundTint">?colorPrimary</item>
+        <item name="backgroundTint">@color/primary_button_background_tint</item>
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
 
 
     <style name="Widget.Sprinkle.Button.Secondary">
-        <item name="android:backgroundTint">?colorSecondary</item>
+        <item name="backgroundTint">@color/secondary_button_background_tint</item>
         <item name="android:textColor">?colorOnSecondary</item>
     </style>
 
     <style name="Widget.Sprinkle.Button.Error">
-        <item name="android:backgroundTint">?colorError</item>
+        <item name="backgroundTint">@color/error_button_background_tint</item>
         <item name="android:textColor">?colorOnError</item>
     </style>
 
