@@ -8,6 +8,8 @@ import javax.inject.Inject
 
 class PlantCreateIconListAdapter @Inject constructor() : RecyclerView.Adapter<PlantCreateIconViewHolder>() {
 
+    var onIconSelectedListener: (Int?) -> Unit = {}
+
     private val items = mutableListOf<Int>()
 
     private var selectedIndex: Int? = null
@@ -28,7 +30,10 @@ class PlantCreateIconListAdapter @Inject constructor() : RecyclerView.Adapter<Pl
                 selectedPosition
             }
             lastSelectedIndex?.let { notifyItemChanged(it) }
-            selectedIndex?.let { notifyItemChanged(it) }
+            selectedIndex?.let {
+                notifyItemChanged(it)
+            }
+            onIconSelectedListener(selectedIndex?.let { items[it] })
         }
     }
 

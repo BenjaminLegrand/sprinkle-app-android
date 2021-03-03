@@ -6,7 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import fr.legrand.sprinkle.R
+import fr.legrand.sprinkle.data.model.Exposition
+import fr.legrand.sprinkle.data.model.TemplateIcon
 import fr.legrand.sprinkle.databinding.FragmentPlantCreateBinding
+import fr.legrand.sprinkle.presentation.ui.extensions.getContent
+import fr.legrand.sprinkle.presentation.ui.extensions.setOnClickDelayListener
 import fr.legrand.sprinkle.presentation.ui.plant.create.icons.PlantCreateIconListAdapter
 import fr.legrand.sprinkle.presentation.ui.plant.create.navigator.PlantCreateFragmentNavigatorListener
 import fr.legrand.viewbinding.extensions.BindingFragment
@@ -15,10 +19,34 @@ import kotlin.math.max
 import kotlin.time.ExperimentalTime
 
 private const val ICON_COLUMNS_COUNT = 3
-private const val DEFAULT_SPRINKLING_VALUE = 1
-private const val DEFAULT_FERTILIZE_VALUE = 1
+private const val DEFAULT_SPRINKLING_INTERVAL = 1
+private const val DEFAULT_FERTILIZE_INTERVAL = 1
 private const val DAYS_IN_WEEK = 7
 private const val WEEKS_IN_MONTH = 4
+
+private val ICONS_MAP = mapOf(
+    R.drawable.ic_plant_template_01 to TemplateIcon.TEMPLATE_1,
+    R.drawable.ic_plant_template_02 to TemplateIcon.TEMPLATE_2,
+    R.drawable.ic_plant_template_03 to TemplateIcon.TEMPLATE_3,
+    R.drawable.ic_plant_template_04 to TemplateIcon.TEMPLATE_4,
+    R.drawable.ic_plant_template_05 to TemplateIcon.TEMPLATE_5,
+    R.drawable.ic_plant_template_06 to TemplateIcon.TEMPLATE_6,
+    R.drawable.ic_plant_template_07 to TemplateIcon.TEMPLATE_7,
+    R.drawable.ic_plant_template_08 to TemplateIcon.TEMPLATE_8,
+    R.drawable.ic_plant_template_09 to TemplateIcon.TEMPLATE_9,
+    R.drawable.ic_plant_template_10 to TemplateIcon.TEMPLATE_10,
+    R.drawable.ic_plant_template_11 to TemplateIcon.TEMPLATE_11,
+    R.drawable.ic_plant_template_12 to TemplateIcon.TEMPLATE_12,
+    R.drawable.ic_plant_template_13 to TemplateIcon.TEMPLATE_13,
+    R.drawable.ic_plant_template_14 to TemplateIcon.TEMPLATE_14,
+    R.drawable.ic_plant_template_15 to TemplateIcon.TEMPLATE_15,
+    R.drawable.ic_plant_template_16 to TemplateIcon.TEMPLATE_16,
+    R.drawable.ic_plant_template_17 to TemplateIcon.TEMPLATE_17,
+    R.drawable.ic_plant_template_18 to TemplateIcon.TEMPLATE_18,
+    R.drawable.ic_plant_template_19 to TemplateIcon.TEMPLATE_19,
+    R.drawable.ic_plant_template_20 to TemplateIcon.TEMPLATE_20,
+    R.drawable.ic_plant_template_21 to TemplateIcon.TEMPLATE_21,
+)
 
 @ExperimentalTime
 @AndroidEntryPoint
@@ -32,8 +60,12 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
 
     private val viewModel: PlantCreateFragmentViewModel by viewModels()
 
-    private var currentSprinklingValue = DEFAULT_SPRINKLING_VALUE
-    private var currentFertilizeValue = DEFAULT_FERTILIZE_VALUE
+    private var currentWinterSprinklingInterval = DEFAULT_SPRINKLING_INTERVAL
+    private var currentWinterFertilizeInterval = DEFAULT_FERTILIZE_INTERVAL
+    private var currentSummerSprinklingInterval = DEFAULT_SPRINKLING_INTERVAL
+    private var currentSummerFertilizeInterval = DEFAULT_FERTILIZE_INTERVAL
+    private var currentIcon: TemplateIcon? = null
+    private var currentExposition: Exposition? = null
 
     override fun getBinding(view: View) = FragmentPlantCreateBinding.bind(view)
 
@@ -50,46 +82,65 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
 
     private fun setupButtons() {
         binding {
-            fragmentPlantCreateCancelButton.setOnClickListener {
+            fragmentPlantCreateCancelButton.setOnClickDelayListener {
                 navigatorListener.onCancelClick(requireActivity())
+            }
+            fragmentPlantCreateSubmitButton.setOnClickDelayListener {
+                viewModel.createPlant(
+                    fragmentPlantCreateName.getContent(),
+                    fragmentPlantCreateSpecies.getContent(),
+                    fragmentPlantCreateLocation.getContent(),
+                    currentWinterSprinklingInterval,
+                    currentWinterFertilizeInterval,
+                    currentSummerSprinklingInterval,
+                    currentSummerFertilizeInterval,
+                    currentExposition!!,
+                    currentIcon!!
+                )
             }
         }
     }
 
     private fun setupFertilize() {
         binding {
-            fragmentPlantCreateFertilizeValue.text =
-                getFertilizeIntervalText(currentFertilizeValue)
+            listOf(
+                fragmentPlantCreateWinterFertilizeInterval to currentWinterFertilizeInterval,
+                fragmentPlantCreateSummerFertilizeInterval to currentSummerFertilizeInterval
+            ).forEach{
+                it.first.text =
+                    getFertilizeIntervalText(it.second)
 
-            fragmentPlantCreateFertilizeLess.setOnClickListener {
-                currentFertilizeValue = max(currentFertilizeValue - 1, DEFAULT_FERTILIZE_VALUE)
-                fragmentPlantCreateFertilizeValue.text =
-                    getFertilizeIntervalText(currentFertilizeValue)
+                fragmentPlantCreateFertilizeLess.setOnClickListener {
+                    currentFertilizeInterval = max(currentFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
+                    fragmentPlantCreateFertilizeValue.text =
+                        getFertilizeIntervalText(currentFertilizeInterval)
 
+                }
+                fragmentPlantCreateFertilizeMore.setOnClickListener {
+                    currentFertilizeInterval++
+                    fragmentPlantCreateFertilizeValue.text =
+                        getFertilizeIntervalText(currentFertilizeInterval)
+                }
             }
-            fragmentPlantCreateFertilizeMore.setOnClickListener {
-                currentFertilizeValue++
-                fragmentPlantCreateFertilizeValue.text =
-                    getFertilizeIntervalText(currentFertilizeValue)
-            }
+
         }
     }
 
     private fun setupSprinkling() {
         binding {
             fragmentPlantCreateSprinklingValue.text =
-                getSprinklingIntervalText(currentSprinklingValue)
+                getSprinklingIntervalText(currentSprinklingInterval)
 
             fragmentPlantCreateSprinklingLess.setOnClickListener {
-                currentSprinklingValue = max(currentSprinklingValue - 1, DEFAULT_SPRINKLING_VALUE)
+                currentSprinklingInterval = max(currentSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
                 fragmentPlantCreateSprinklingValue.text =
-                    getSprinklingIntervalText(currentSprinklingValue)
+                    getSprinklingIntervalText(currentSprinklingInterval)
 
             }
             fragmentPlantCreateSprinklingMore.setOnClickListener {
-                currentSprinklingValue++
+                currentSprinklingInterval++
                 fragmentPlantCreateSprinklingValue.text =
-                    getSprinklingIntervalText(currentSprinklingValue)
+                    getSprinklingIntervalText(currentSprinklingInterval)
             }
         }
     }
@@ -141,17 +192,23 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
     private fun setupExposition() {
         binding {
             fragmentPlantCreateExpositionShadow.setOnClickListener {
+                checkFormValid()
+                currentExposition = Exposition.SHADOW
                 fragmentPlantCreateExpositionShadow.isSelected = !fragmentPlantCreateExpositionShadow.isSelected
                 fragmentPlantCreateExpositionLowSunlight.isSelected = false
                 fragmentPlantCreateExpositionSunlight.isSelected = false
             }
             fragmentPlantCreateExpositionLowSunlight.setOnClickListener {
+                checkFormValid()
+                currentExposition = Exposition.LOW_SUNLIGHT
                 fragmentPlantCreateExpositionLowSunlight.isSelected =
                     !fragmentPlantCreateExpositionLowSunlight.isSelected
                 fragmentPlantCreateExpositionShadow.isSelected = false
                 fragmentPlantCreateExpositionSunlight.isSelected = false
             }
             fragmentPlantCreateExpositionSunlight.setOnClickListener {
+                checkFormValid()
+                currentExposition = Exposition.SUNLIGHT
                 fragmentPlantCreateExpositionSunlight.isSelected = !fragmentPlantCreateExpositionSunlight.isSelected
                 fragmentPlantCreateExpositionShadow.isSelected = false
                 fragmentPlantCreateExpositionLowSunlight.isSelected = false
@@ -165,31 +222,21 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
             fragmentPlantCreateIconList.layoutManager =
                 StaggeredGridLayoutManager(ICON_COLUMNS_COUNT, StaggeredGridLayoutManager.VERTICAL)
 
-            plantCreateIconListAdapter.setItems(
-                listOf(
-                    R.drawable.ic_plant_template_01,
-                    R.drawable.ic_plant_template_02,
-                    R.drawable.ic_plant_template_03,
-                    R.drawable.ic_plant_template_04,
-                    R.drawable.ic_plant_template_05,
-                    R.drawable.ic_plant_template_06,
-                    R.drawable.ic_plant_template_07,
-                    R.drawable.ic_plant_template_08,
-                    R.drawable.ic_plant_template_09,
-                    R.drawable.ic_plant_template_10,
-                    R.drawable.ic_plant_template_11,
-                    R.drawable.ic_plant_template_12,
-                    R.drawable.ic_plant_template_13,
-                    R.drawable.ic_plant_template_14,
-                    R.drawable.ic_plant_template_15,
-                    R.drawable.ic_plant_template_16,
-                    R.drawable.ic_plant_template_17,
-                    R.drawable.ic_plant_template_18,
-                    R.drawable.ic_plant_template_19,
-                    R.drawable.ic_plant_template_20,
-                    R.drawable.ic_plant_template_21,
-                )
-            )
+            plantCreateIconListAdapter.onIconSelectedListener = { value ->
+                checkFormValid()
+                currentIcon = value?.let { ICONS_MAP[it] }
+            }
+            plantCreateIconListAdapter.setItems(ICONS_MAP.keys.toList())
+        }
+    }
+
+    private fun checkFormValid() {
+        binding {
+            fragmentPlantCreateSubmitButton.isEnabled = currentIcon != null
+                    && currentExposition != null
+                    && fragmentPlantCreateName.getContent().isNotBlank()
+                    && fragmentPlantCreateSpecies.getContent().isNotBlank()
+                    && fragmentPlantCreateLocation.getContent().isNotBlank()
         }
     }
 }

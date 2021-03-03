@@ -1,12 +1,12 @@
 package fr.legrand.sprinkle.data.model
 
-import java.util.Date
+import java.util.*
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
 data class Plant constructor(
-    val id: Int,
+    val id: Int = 0,
     val name: String,
     val species: String,
     val templateIcon: TemplateIcon,
@@ -15,5 +15,7 @@ data class Plant constructor(
     val lastSprinkleDate: Date?,
     val nextSprinkleDate: Date?,
     val winterSprinkleInterval: Duration,
-    val summerSprinkleInterval: Duration
+    val winterFertilizeInterval: Duration,
+    val summerSprinkleInterval: Duration,
+    val summerFertilizeInterval: Duration
 )
