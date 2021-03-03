@@ -15,8 +15,8 @@ android {
         applicationId "fr.legrand.sprinkle"
         minSdkVersion Versions.MIN_SDK
         targetSdkVersion Versions.TARGET_SDK
-        versionCode 2
-        versionName "0.2"
+        versionCode 3
+        versionName "0.3"
 
         buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
     }
