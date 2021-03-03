@@ -114,7 +114,7 @@
         <View
             android:id="@+id/fragment_plant_list_delete_shadow"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/plant_list_delete_shadow_height"
+            android:layout_height="@dimen/default_shadow_height"
             android:background="@drawable/shadow_bottom_gradient"
             app:layout_constraintBottom_toTopOf="@id/fragment_plant_list_delete_buttons_layout" />
 

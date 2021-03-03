@@ -19,11 +19,51 @@
         <item quantity="one">Prochain arrosage demain</item>
         <item quantity="other">Prochain arrosage dans %d jours</item>
     </plurals>
+    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
+
+    <!--  Plant creation  -->
+    <string name="plant_create_name">Nom</string>
+    <string name="plant_create_species">Espèce</string>
+    <string name="plant_create_location">Emplacement</string>
+    <string name="plant_create_exposition_title">Exposition</string>
+    <string name="fragment_plant_create_exposition_shadow">Ombre</string>
+    <string name="fragment_plant_create_exposition_sunlight">Luminosité\nforte</string>
+    <string name="fragment_plant_create_exposition_low_sunlight">Luminosité\nfaible</string>
+    <string name="plant_create_icon_title">Icône</string>
+    <string name="fragment_plant_create_submit_button_text">Créer</string>
+    <string name="fragment_plant_create_form_title">Créez votre plante en remplissant ses informations !</string>
+    <string name="fragment_plant_create_cancel_button_text">Annuler</string>
+    <string name="plant_create_sprinkling_title">Délai d\'arrosage</string>
+    <string name="fragment_plant_create_more_button_text">+</string>
+    <string name="fragment_plant_create_less_button_text">-</string>
+    <plurals name="plant_creation_sprinkling_format_days">
+        <item quantity="one">%d jour</item>
+        <item quantity="other">%d jours</item>
+    </plurals>
+    <plurals name="plant_creation_sprinkling_format_weeks">
+        <item quantity="one">%d semaine</item>
+        <item quantity="other">%d semaines</item>
+    </plurals>
+    <string name="plant_creation_sprinkling_format_weeks_days">%s et %s</string>
+
+    <string name="plant_create_fertilize_title">Engrais</string>
+    <plurals name="plant_creation_fertilize_format_months">
+        <item quantity="one">%d mois</item>
+        <item quantity="other">%d mois</item>
+    </plurals>
+    <plurals name="plant_creation_fertilize_format_weeks">
+        <item quantity="one">%d semaine</item>
+        <item quantity="other">%d semaines</item>
+    </plurals>
+    <string name="plant_creation_fertilize_format_months_weeks">%s et %s</string>
 
     <!--  Settings  -->
     <string name="settings_title">Paramètres</string>
     <string name="settings_other_section_title">Autres</string>
     <string name="settings_version_label">Version</string>
-    <string name="fragment_plant_list_delete_buttons_description">Sélectionnez les plantes à supprimer</string>
+    <string name="plant_create_sprinkling_winter_title">Hiver</string>
+    <string name="plant_create_sprinkling_summer_title">Été</string>
+    <string name="plant_create_fertilize_summer_title">Été</string>
+    <string name="plant_create_fertilize_winter_title">Hiver</string>
 
 </resources>

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="light_blue_200">#81D4FA</color>
-    <color name="light_blue_500">#03A9F4</color>
-    <color name="light_blue_700">#0288D1</color>
+    <color name="blue_700">#1976d2</color>
+    <color name="blue_900">#0d47a1</color>
 
-    <color name="green_700">#41c300</color>
-    <color name="green_900">#008b00</color>
+    <color name="green_800">#009400</color>
+    <color name="green_900">#006500</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bottombar_item_unselected_color">#BDBDBD</color>
-    
+
     <color name="bottomsheet_background_color">#88000000</color>
     <color name="shadow_gradient_start_color">#33000000</color>
     <color name="shadow_gradient_end_color">#00000000</color>
+
+    <color name="plant_create_icon_selected_background">#fff</color>
+    <color name="plant_create_icon_unselected_background">#66ffffff</color>
 </resources>

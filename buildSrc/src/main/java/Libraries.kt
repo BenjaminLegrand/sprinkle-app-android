@@ -46,7 +46,8 @@ object Libraries {
         "androidx.hilt:hilt-compiler:${Versions.HILT_LIFECYCLE}"
     )
 
-    const val VIEW_BINDING_EXTENSIONS = "fr.blegrand.libraries:view-binding-extensions:${Versions.VIEW_BINDING_EXTENSIONS}"
+    const val VIEW_BINDING_EXTENSIONS =
+        "fr.blegrand.libraries:view-binding-extensions:${Versions.VIEW_BINDING_EXTENSIONS}"
 
     const val JUNIT = "junit:junit:${Versions.JUNIT}"
     const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.ROBOLECTRIC}"

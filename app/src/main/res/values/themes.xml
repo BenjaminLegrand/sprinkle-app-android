@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="Theme.Sprinkle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_blue_500</item>
-        <item name="colorPrimaryVariant">@color/light_blue_700</item>
+        <item name="colorPrimary">@color/blue_700</item>
+        <item name="colorPrimaryVariant">@color/blue_900</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_700</item>
+        <item name="colorSecondary">@color/green_800</item>
         <item name="colorSecondaryVariant">@color/green_900</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
@@ -24,5 +24,9 @@
         <item name="colorOnError">#FFFFFF</item>
 
         <item name="actionOverflowButtonStyle">@style/Widget.Sprinkle.OverflowButton</item>
+    </style>
+
+    <style name="Theme.Sprinkle.TextInputLayout.Light" parent="Theme.Sprinkle">
+        <item name="colorSecondary">@color/white</item>
     </style>
 </resources>
