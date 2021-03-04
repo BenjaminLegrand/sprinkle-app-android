@@ -2,26 +2,40 @@
     <!-- Base application theme. -->
     <style name="Theme.Sprinkle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_blue_200</item>
-        <item name="colorPrimaryVariant">@color/blue_900</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">#242424</item>
+        <item name="colorPrimaryVariant">#181818</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorIconPrimary">#64b5f6</item>
+        <item name="colorIconPrimaryDark">#2196f3</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_800</item>
-        <item name="colorSecondaryVariant">@color/green_800</item>
+        <item name="colorSecondary">#66bb6a</item>
+        <item name="colorSecondaryVariant">#43a047</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="colorIconSecondary">#66bb6a</item>
+        <item name="colorIconSecondaryDark">#43a047</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
         <!-- Customize your theme here. -->
-        <item name="textColorPrimaryLight">@android:color/primary_text_dark</item>
-        <item name="textColorPrimaryDark">@android:color/primary_text_light</item>
-        <item name="textColorSecondaryLight">@android:color/tertiary_text_dark</item>
-        <item name="textColorSecondaryDark">@android:color/tertiary_text_light</item>
-        <item name="separatorColor">#E0E0E0</item>
-<!--        TODO night theme-->
-        <item name="colorSurface">#FFFFFF</item>
-        <item name="colorError">#D32F2F</item>
-        <item name="colorOnError">#FFFFFF</item>
+        <item name="textColorOnSurface">#ddffffff</item>
+        <item name="secondaryTextColorOnSurface">#77ffffff</item>
+        <item name="textColorOnPrimary">#ddffffff</item>
+        <item name="secondaryTextColorOnPrimary">#77ffffff</item>
+
+        <item name="colorButtonPrimary">#2196f3</item>
+        <item name="textColorButtonPrimary">#000</item>
+        <item name="colorButtonSecondary">#43a047</item>
+        <item name="textColorButtonSecondary">#000</item>
+
+        <item name="colorError">#f44336</item>
+        <item name="colorOnError">#000</item>
+
+        <item name="separatorColor">#ddffffff</item>
+
+        <item name="colorSurface">#121212</item>
 
         <item name="actionOverflowButtonStyle">@style/Widget.Sprinkle.OverflowButton</item>
+
     </style>
 </resources>

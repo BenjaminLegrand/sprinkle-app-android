@@ -2,23 +2,35 @@
     <!-- Base application theme. -->
     <style name="Theme.Sprinkle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/blue_700</item>
-        <item name="colorPrimaryVariant">@color/blue_900</item>
+        <item name="colorPrimary">#1976d2</item>
+        <item name="colorPrimaryVariant">#0d47a1</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorIconPrimary">#1976d2</item>
+        <item name="colorIconPrimaryDark">#0d47a1</item>
+
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_800</item>
-        <item name="colorSecondaryVariant">@color/green_900</item>
+        <item name="colorSecondary">#009400</item>
+        <item name="colorSecondaryVariant">#006500</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="colorIconSecondary">#009400</item>
+        <item name="colorIconSecondaryDark">#006500</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <!-- Customize your theme here. -->
-        <item name="textColorPrimaryLight">@android:color/primary_text_dark</item>
-        <item name="textColorPrimaryDark">@android:color/primary_text_light</item>
-        <item name="textColorSecondaryLight">@android:color/tertiary_text_dark</item>
-        <item name="textColorSecondaryDark">@android:color/tertiary_text_light</item>
+        <item name="textColorOnSurface">@android:color/primary_text_light</item>
+        <item name="secondaryTextColorOnSurface">@android:color/tertiary_text_light</item>
+        <item name="textColorOnPrimary">@android:color/primary_text_dark</item>
+        <item name="secondaryTextColorOnPrimary">@android:color/tertiary_text_dark</item>
+
+        <item name="colorButtonPrimary">?colorPrimary</item>
+        <item name="textColorButtonPrimary">?colorOnPrimary</item>
+        <item name="colorButtonSecondary">?colorSecondary</item>
+        <item name="textColorButtonSecondary">?colorOnSecondary</item>
 
         <item name="separatorColor">#BDBDBD</item>
+
         <item name="colorSurface">#FFFFFF</item>
         <item name="colorError">#D32F2F</item>
         <item name="colorOnError">#FFFFFF</item>

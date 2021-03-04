@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="light_blue_200">#81D4FA</color>
-    <color name="blue_700">#1976d2</color>
-    <color name="blue_900">#0d47a1</color>
-
-    <color name="green_800">#009400</color>
-    <color name="green_900">#006500</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -15,6 +9,6 @@
     <color name="shadow_gradient_start_color">#33000000</color>
     <color name="shadow_gradient_end_color">#00000000</color>
 
-    <color name="plant_create_icon_selected_background">#fff</color>
+    <color name="plant_create_icon_selected_background">#ccffffff</color>
     <color name="plant_create_icon_unselected_background">#66ffffff</color>
 </resources>
