@@ -24,12 +24,12 @@
         <item name="secondaryTextColorOnPrimary">#77ffffff</item>
 
         <item name="colorButtonPrimary">#2196f3</item>
-        <item name="textColorButtonPrimary">#000</item>
+        <item name="textColorButtonPrimary">#ddffffff</item>
         <item name="colorButtonSecondary">#43a047</item>
-        <item name="textColorButtonSecondary">#000</item>
+        <item name="textColorButtonSecondary">#ddffffff</item>
 
         <item name="colorError">#f44336</item>
-        <item name="colorOnError">#000</item>
+        <item name="colorOnError">#ddffffff</item>
 
         <item name="separatorColor">#ddffffff</item>
 
