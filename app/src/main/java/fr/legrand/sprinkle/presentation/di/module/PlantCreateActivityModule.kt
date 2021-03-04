@@ -16,5 +16,4 @@ object PlantCreateActivityModule {
     @ActivityScoped
     fun plantCreateFragmentNavigatorListener(navigator: PlantCreateNavigator): PlantCreateFragmentNavigatorListener =
         navigator
-
 }
