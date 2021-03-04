@@ -22,7 +22,7 @@
 
     <style name="Widget.Sprinkle.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/primary_button_background_tint</item>
-        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textColor">?textColorButtonPrimary</item>
     </style>
 
     <style name="Widget.Sprinkle.Button.Borderless" parent="Widget.MaterialComponents.Button.TextButton">
@@ -34,7 +34,7 @@
 
     <style name="Widget.Sprinkle.Button.Secondary">
         <item name="backgroundTint">@color/secondary_button_background_tint</item>
-        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:textColor">?textColorButtonSecondary</item>
     </style>
 
     <style name="Widget.Sprinkle.Button.Error">
@@ -58,61 +58,29 @@
     </style>
 
     <style name="TextAppearance.Sprinkle.Settings.Title" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textColor">?colorPrimaryVariant</item>
+        <item name="android:textColor">?colorIconPrimary</item>
     </style>
 
     <style name="TextAppearance.Sprinkle.Settings.Value" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">?textColorSecondaryDark</item>
+        <item name="android:textColor">?secondaryTextColorOnSurface</item>
     </style>
 
-    <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
-        <item name="android:textColor">?textColorPrimaryDark</item>
-    </style>
+    <style name="TextAppearance.Sprinkle.Headline2" parent="TextAppearance.MaterialComponents.Headline2" />
 
-    <style name="TextAppearance.Sprinkle.Headline2.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
+    <style name="TextAppearance.Sprinkle.Headline4" parent="TextAppearance.MaterialComponents.Headline4" />
 
-    <style name="TextAppearance.Sprinkle.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
-        <item name="android:textColor">?textColorPrimaryDark</item>
-    </style>
-
-    <style name="TextAppearance.Sprinkle.Headline4.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
+    <style name="TextAppearance.Sprinkle.Headline4.Light" />
 
     <style name="TextAppearance.Sprinkle.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textColor">?textColorPrimaryDark</item>
         <item name="android:textSize">@dimen/subtitle_text_size</item>
     </style>
 
-    <style name="TextAppearance.Sprinkle.Subtitle.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
+    <style name="TextAppearance.Sprinkle.Headline5" parent="TextAppearance.MaterialComponents.Headline5" />
 
-    <style name="TextAppearance.Sprinkle.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="android:textColor">?textColorPrimaryDark</item>
-    </style>
 
-    <style name="TextAppearance.Sprinkle.Headline5.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
+    <style name="TextAppearance.Sprinkle.Body1" parent="TextAppearance.MaterialComponents.Body1" />
 
-    <style name="TextAppearance.Sprinkle.Body1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">?textColorPrimaryDark</item>
-    </style>
 
-    <style name="TextAppearance.Sprinkle.Body1.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
-
-    <style name="TextAppearance.Sprinkle.Body2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">?textColorPrimaryDark</item>
-    </style>
-
-    <style name="TextAppearance.Sprinkle.Body2.Light">
-        <item name="android:textColor">?textColorPrimaryLight</item>
-    </style>
-
+    <style name="TextAppearance.Sprinkle.Body2" parent="TextAppearance.MaterialComponents.Body2" />
 
 </resources>

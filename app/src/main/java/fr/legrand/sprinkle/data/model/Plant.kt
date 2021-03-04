@@ -1,6 +1,6 @@
 package fr.legrand.sprinkle.data.model
 
-import java.util.*
+import java.util.Date
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
