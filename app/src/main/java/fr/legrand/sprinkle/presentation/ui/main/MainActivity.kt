@@ -30,7 +30,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>() {
         binding {
             mainActivityBottomNavView.setupWithNavController(navController)
             mainActivityBottomNavView.setOnNavigationItemReselectedListener {
-                //Nothing to do
+                // Nothing to do
             }
         }
     }
