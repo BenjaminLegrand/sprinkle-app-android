@@ -22,7 +22,7 @@ class PlantRepository @Inject constructor(
         plantBusinessHelper.deletePlants(ids)
     }
 
-    suspend fun createPlant(plant : Plant) : Unit = withContext(coroutineContext){
+    suspend fun createPlant(plant: Plant): Unit = withContext(coroutineContext) {
         plantBusinessHelper.addPlant(plant)
     }
 }

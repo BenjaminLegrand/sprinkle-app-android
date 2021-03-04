@@ -33,4 +33,3 @@ fun View.setOnClickDelayListener(listener: () -> Unit) {
         }
     }
 }
-

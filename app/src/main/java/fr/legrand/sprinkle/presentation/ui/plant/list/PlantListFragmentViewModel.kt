@@ -30,5 +30,4 @@ class PlantListFragmentViewModel @ViewModelInject constructor(
     }
 
     fun getPlantListLiveData(): LiveData<List<PlantViewDataWrapper>> = plantListLiveData
-
 }

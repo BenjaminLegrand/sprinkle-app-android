@@ -44,5 +44,4 @@ class PlantCreateIconListAdapter @Inject constructor() : RecyclerView.Adapter<Pl
     }
 
     override fun getItemCount() = items.size
-
 }

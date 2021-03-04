@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="textColorPrimaryDark" />
-    <attr name="textColorPrimaryLight" />
-    <attr name="textColorSecondaryDark" />
-    <attr name="textColorSecondaryLight" />
+    <attr name="textColorOnPrimary" />
+    <attr name="secondaryTextColorOnPrimary" />
+    <attr name="textColorOnSurface" />
+    <attr name="secondaryTextColorOnSurface" />
+
     <attr name="separatorColor" />
+
+    <attr name="colorButtonPrimary" />
+    <attr name="textColorButtonPrimary" />
+    <attr name="colorButtonSecondary" />
+    <attr name="textColorButtonSecondary" />
+
+    <attr name="colorIconPrimary" />
+    <attr name="colorIconPrimaryDark" />
+    <attr name="colorIconSecondary" />
+    <attr name="colorIconSecondaryDark" />
 </resources>

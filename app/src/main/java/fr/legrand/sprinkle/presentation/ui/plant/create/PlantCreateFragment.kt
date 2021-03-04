@@ -2,6 +2,7 @@ package fr.legrand.sprinkle.presentation.ui.plant.create
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,6 +81,12 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
         setupWinterFertilize()
         setupSummerFertilize()
         setupButtons()
+
+        binding {
+            fragmentPlantCreateName.addTextChangedListener { checkFormValid() }
+            fragmentPlantCreateSpecies.addTextChangedListener { checkFormValid() }
+            fragmentPlantCreateLocation.addTextChangedListener { checkFormValid() }
+        }
     }
 
     private fun setupButtons() {
@@ -112,7 +119,6 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 currentWinterFertilizeInterval = max(currentWinterFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
                 fragmentPlantCreateWinterFertilizeInterval.text =
                     getFertilizeIntervalText(currentWinterFertilizeInterval)
-
             }
             fragmentPlantCreateWinterFertilizeMore.setOnClickListener {
                 currentWinterFertilizeInterval++
@@ -131,7 +137,6 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 currentSummerFertilizeInterval = max(currentSummerFertilizeInterval - 1, DEFAULT_FERTILIZE_INTERVAL)
                 fragmentPlantCreateSummerFertilizeInterval.text =
                     getFertilizeIntervalText(currentSummerFertilizeInterval)
-
             }
             fragmentPlantCreateSummerFertilizeMore.setOnClickListener {
                 currentSummerFertilizeInterval++
@@ -150,7 +155,6 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 currentWinterSprinklingInterval = max(currentWinterSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
                 fragmentPlantCreateWinterSprinklingInterval.text =
                     getSprinklingIntervalText(currentWinterSprinklingInterval)
-
             }
             fragmentPlantCreateWinterSprinklingMore.setOnClickListener {
                 currentWinterSprinklingInterval++
@@ -169,7 +173,6 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 currentSummerSprinklingInterval = max(currentSummerSprinklingInterval - 1, DEFAULT_SPRINKLING_INTERVAL)
                 fragmentPlantCreateSummerSprinklingInterval.text =
                     getSprinklingIntervalText(currentSummerSprinklingInterval)
-
             }
             fragmentPlantCreateSummerSprinklingMore.setOnClickListener {
                 currentSummerSprinklingInterval++
@@ -178,7 +181,6 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
             }
         }
     }
-
 
     private fun getSprinklingIntervalText(value: Int): String {
         val weekCount = value / DAYS_IN_WEEK
@@ -227,26 +229,27 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
     private fun setupExposition() {
         binding {
             fragmentPlantCreateExpositionShadow.setOnClickListener {
-                checkFormValid()
-                currentExposition = Exposition.SHADOW
                 fragmentPlantCreateExpositionShadow.isSelected = !fragmentPlantCreateExpositionShadow.isSelected
+                currentExposition = if (fragmentPlantCreateExpositionShadow.isSelected) Exposition.SHADOW else null
                 fragmentPlantCreateExpositionLowSunlight.isSelected = false
                 fragmentPlantCreateExpositionSunlight.isSelected = false
+                checkFormValid()
             }
             fragmentPlantCreateExpositionLowSunlight.setOnClickListener {
-                checkFormValid()
-                currentExposition = Exposition.LOW_SUNLIGHT
                 fragmentPlantCreateExpositionLowSunlight.isSelected =
                     !fragmentPlantCreateExpositionLowSunlight.isSelected
+                currentExposition =
+                    if (fragmentPlantCreateExpositionLowSunlight.isSelected) Exposition.LOW_SUNLIGHT else null
                 fragmentPlantCreateExpositionShadow.isSelected = false
                 fragmentPlantCreateExpositionSunlight.isSelected = false
+                checkFormValid()
             }
             fragmentPlantCreateExpositionSunlight.setOnClickListener {
-                checkFormValid()
-                currentExposition = Exposition.SUNLIGHT
                 fragmentPlantCreateExpositionSunlight.isSelected = !fragmentPlantCreateExpositionSunlight.isSelected
+                currentExposition = if (fragmentPlantCreateExpositionSunlight.isSelected) Exposition.SUNLIGHT else null
                 fragmentPlantCreateExpositionShadow.isSelected = false
                 fragmentPlantCreateExpositionLowSunlight.isSelected = false
+                checkFormValid()
             }
         }
     }
@@ -258,8 +261,8 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
                 StaggeredGridLayoutManager(ICON_COLUMNS_COUNT, StaggeredGridLayoutManager.VERTICAL)
 
             plantCreateIconListAdapter.onIconSelectedListener = { value ->
-                checkFormValid()
                 currentIcon = value?.let { ICONS_MAP[it] }
+                checkFormValid()
             }
             plantCreateIconListAdapter.setItems(ICONS_MAP.keys.toList())
         }
@@ -267,11 +270,11 @@ class PlantCreateFragment : BindingFragment<FragmentPlantCreateBinding>() {
 
     private fun checkFormValid() {
         binding {
-            fragmentPlantCreateSubmitButton.isEnabled = currentIcon != null
-                    && currentExposition != null
-                    && fragmentPlantCreateName.getContent().isNotBlank()
-                    && fragmentPlantCreateSpecies.getContent().isNotBlank()
-                    && fragmentPlantCreateLocation.getContent().isNotBlank()
+            fragmentPlantCreateSubmitButton.isEnabled = currentIcon != null &&
+                currentExposition != null &&
+                fragmentPlantCreateName.getContent().isNotBlank() &&
+                fragmentPlantCreateSpecies.getContent().isNotBlank() &&
+                fragmentPlantCreateLocation.getContent().isNotBlank()
         }
     }
 }

@@ -4,10 +4,10 @@
     android:viewportWidth="480"
     android:viewportHeight="480">
     <path
-        android:fillColor="?colorSecondaryVariant"
+        android:fillColor="?colorIconSecondaryDark"
         android:pathData="m8,56h112c79.527,0 144,64.473 144,144h-112c-79.527,0 -144,-64.473 -144,-144zM8,56" />
     <path
-        android:fillColor="?colorSecondary"
+        android:fillColor="?colorIconSecondary"
         android:pathData="m328,392h-112c0,-79.527 64.473,-144 144,-144h112c0,79.527 -64.473,144 -144,144zM328,392" />
     <path
         android:fillColor="#FF000000"
